@@ -24,19 +24,6 @@ class PhotoBanner extends React.Component {
   }
 }
 
-export default PhotoBanner;
-
-const PhotoDiv = styled.div`
-  display: inline-block;
-  height: 288px;
-  width: 100%;
-  border: 2px solid #eee;
-  overflow: hidden;
-  box-sizing: border-box;
-  position: relative;
-  margin: auto;
-`;
-
 const scroll = keyframes`
   {
     0% { left: 0; }
@@ -51,3 +38,16 @@ const PhotoInnerDiv = styled.div`
   position: relative;
   animation: ${scroll} 20s linear infinite;
 `;
+
+const PhotoDiv = styled.div`
+  display: inline-block;
+  height: 288px;
+  width: 100%;
+  border: 2px solid #eee;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  margin: auto;
+`;
+
+export default PhotoBanner;
