@@ -16,7 +16,7 @@ class PhotoBanner extends React.Component {
       <PhotoDiv>
         <PhotoInnerDiv>
           {this.props.photos.map(photo => (
-            <Photo photo={photo} />
+            <Photo photo={photo} key={photo.id} />
           ))}
         </PhotoInnerDiv>
       </PhotoDiv>
@@ -36,15 +36,14 @@ const PhotoInnerDiv = styled.div`
   width: 200%;
   margin: auto;
   padding: .75em;
-  position: relative;
+  position: absolute;
   animation: ${scroll} 30s linear infinite;
 `;
 
 const PhotoDiv = styled.div`
   display: inline-block;
-  height: 19em;
+  height: 19.53em;
   width: 100%;
-  border: 2px solid #eee;
   overflow: hidden;
   box-sizing: border-box;
   position: relative;

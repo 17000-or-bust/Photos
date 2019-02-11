@@ -2,14 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
-import fakeImageData from '../../fakeImgData';
+import ajax from '../lib/ajax';
+// import fakeImageData from '../../fakeImgData';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: fakeImageData,
+      photos: [],
     };
+  }
+
+  componentDidMount() {
+    const randomId = Math.floor(Math.random() * 100);
+    this.getPhotosForBanner(randomId);
+  }
+
+  getPhotosForBanner(id) {
+    ajax.getPhotos(id, (err, data) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      this.setState({
+        photos: data,
+      });
+    });
   }
 
   render() {
@@ -17,9 +35,9 @@ class App extends React.Component {
     return (
       <div>
         <NavPlaceholder />
-        <div className="topBanner">
+        <MainBannerDiv>
           <PhotoBanner photos={photos} />
-        </div>
+        </MainBannerDiv>
         <SaveThisRestaurantButton>Save This Restaurant</SaveThisRestaurantButton>
         <OverviewPlaceholder />
         <h2>50 Photos</h2>
@@ -39,4 +57,8 @@ const OverviewPlaceholder = styled.div`
 const NavPlaceholder = styled.div`
   height: 10rem;
   background: url(https://via.placeholder.com/1300x177?text=Restaurant+NavBar+Placeholder);
+`;
+
+const MainBannerDiv = styled.div`
+  margin: 10px;
 `;

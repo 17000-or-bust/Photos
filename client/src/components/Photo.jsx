@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Photo = props => (
   <ImgSpan>
-    <Img src={props.photo} alt="" />
+    <Img src={props.photo.image_url} alt="" />
   </ImgSpan>
 );
 
@@ -11,7 +11,7 @@ export default Photo;
 
 const Img = styled.img`
   display: inline-block;
-  border: 2px solid gray;
+  border: 3px solid gray;
   transition: all .2s ease-out;
 `;
 
