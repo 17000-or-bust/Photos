@@ -48,6 +48,9 @@ const PhotoDiv = styled.div`
   box-sizing: border-box;
   position: relative;
   margin: auto;
+  ${PhotoInnerDiv}: hover {
+    animation-play-state: paused;
+  }
 `;
 
 export default PhotoBanner;
