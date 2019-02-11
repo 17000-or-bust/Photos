@@ -35,13 +35,14 @@ const PhotoInnerDiv = styled.div`
   display: block;
   width: 200%;
   margin: auto;
+  padding: .75em;
   position: relative;
-  animation: ${scroll} 20s linear infinite;
+  animation: ${scroll} 30s linear infinite;
 `;
 
 const PhotoDiv = styled.div`
   display: inline-block;
-  height: 288px;
+  height: 19em;
   width: 100%;
   border: 2px solid #eee;
   overflow: hidden;
