@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Photo from './Photo';
 
 class PhotoBanner extends React.Component {
@@ -14,9 +14,11 @@ class PhotoBanner extends React.Component {
   render() {
     return (
       <PhotoDiv>
-        {this.props.photos.map(photo => (
-          <Photo photo={photo} />
-        ))}
+        <PhotoInnerDiv>
+          {this.props.photos.map(photo => (
+            <Photo photo={photo} />
+          ))}
+        </PhotoInnerDiv>
       </PhotoDiv>
     );
   }
@@ -32,5 +34,20 @@ const PhotoDiv = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-  margin: 200px auto;
+  margin: auto;
+`;
+
+const scroll = keyframes`
+  {
+    0% { left: 0; }
+    100% { left: -100%; }
+  }
+`;
+
+const PhotoInnerDiv = styled.div`
+  display: block;
+  width: 200%;
+  margin: auto;
+  position: relative;
+  animation: ${scroll} 20s linear infinite;
 `;
