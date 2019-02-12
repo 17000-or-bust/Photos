@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAngleRight, faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
 import PhotoModal from './PhotoModal';
 import ajax from '../lib/ajax';
 
+library.add(faAngleRight);
+library.add(faAngleLeft);
+library.add(faTimes);
 
 class App extends React.Component {
   constructor(props) {
@@ -59,9 +64,7 @@ class App extends React.Component {
 
         </MainBannerDiv>
 
-        <PhotoModal show={showModal} closeModal={this.closePhotoModal}>
-          <h1>HELLO!!</h1>
-        </PhotoModal>
+        <PhotoModal show={showModal} closeModal={this.closePhotoModal} />
 
         <OverviewPlaceholder />
         <h2>50 Photos</h2>
