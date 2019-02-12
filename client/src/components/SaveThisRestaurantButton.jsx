@@ -12,7 +12,6 @@ class SaveThisRestaurantButton extends React.Component {
   }
 
   handleClick(event) {
-    console.log('clicked');
     event.preventDefault();
     this.setState(state => ({
       isSaved: !state.isSaved,
@@ -30,14 +29,21 @@ class SaveThisRestaurantButton extends React.Component {
 const SaveButton = styled.button`
   display: inline-block;
   background: white;
-  width: 15rem;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: black;
-  margin: 0 1em;
-  padding: .7em 1em;
-  overflow: visible;
+  width: 240px;
+  height: 50.31px;
+  border-radius: 2px;
+  border: 1px solid #d8d9db;
+  color: #2d333f;
+  padding: 11px 15px;
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  text-align: center;
   outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-weight: 20px;
+  cursor: pointer;
 `;
 
 export default SaveThisRestaurantButton;
