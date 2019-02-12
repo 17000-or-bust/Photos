@@ -5,25 +5,47 @@ import PhotoCarousel from './PhotoCarousel';
 import PhotoCarouselRightArrow from './PhotoCarouselRightArrow';
 import PhotoCarouselLeftArrow from './PhotoCarouselLeftArrow';
 
-const PhotoModal = (props) => {
-  const { closeModal, show } = props;
-  const showHide = show ? 'photo-modal block' : 'photo-modal none';
+class PhotoModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-  return (
-    <div className={showHide}>
-      <InnerModal>
-        <PhotoCarousel />
+    };
+    this.handlePreviousImageClick = this.handlePreviousImageClick.bind(this);
+    this.handleNextImageClick = this.handleNextImageClick.bind(this);
+  }
 
-        <PhotoCarouselLeftArrow />
-        <PhotoCarouselRightArrow />
+  handlePreviousImageClick(event) {
+    event.preventDefault();
+    console.log('GO BACK');
+  }
 
-      </InnerModal>
-      <ExitButton>
-        <FontAwesomeIcon type="button" onClick={closeModal} icon="times" />
-      </ExitButton>
-    </div>
-  );
-};
+  handleNextImageClick(event) {
+    event.preventDefault();
+    console.log('NEXT');
+  }
+
+
+  render() {
+    const { closeModal, show } = this.props;
+    const showHide = show ? 'photo-modal block' : 'photo-modal none';
+
+    return (
+      <div className={showHide}>
+        <InnerModal>
+          <PhotoCarousel />
+
+          <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
+          <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
+
+        </InnerModal>
+        <ExitButton>
+          <FontAwesomeIcon type="button" onClick={closeModal} icon="times" />
+        </ExitButton>
+      </div>
+    );
+  }
+}
 
 const InnerModal = styled.section`
   position: fixed;
@@ -36,7 +58,7 @@ const InnerModal = styled.section`
 `;
 
 const ExitButton = styled.div`
-  color: #91949a;
+  color: #6f737b;
   font-size: 2em;
   position: absolute;
   top: 2%;
