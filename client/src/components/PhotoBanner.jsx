@@ -12,11 +12,12 @@ class PhotoBanner extends React.Component {
   }
 
   render() {
+    const { photos, openModal, closeModal } = this.props;
     return (
       <PhotoDiv>
         <PhotoInnerDiv>
-          {this.props.photos.map(photo => (
-            <Photo photo={photo} key={photo.id} />
+          {photos.map(photo => (
+            <Photo photo={photo} key={photo.id} openModal={openModal} closeModal={closeModal} />
           ))}
         </PhotoInnerDiv>
       </PhotoDiv>

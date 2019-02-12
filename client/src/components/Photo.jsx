@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Photo = props => (
   <ImgSpan>
-    <Img src={props.photo.image_url} alt="" />
+    <Img onClick={event => props.openModal(event)} src={props.photo.image_url} alt="" />
   </ImgSpan>
 );
 
