@@ -2,19 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
+import PhotoModal from './PhotoModal';
 import ajax from '../lib/ajax';
-// import fakeImageData from '../../fakeImgData';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       photos: [],
+      showModal: false,
     };
+    this.openPhotoModal = this.openPhotoModal.bind(this);
+    this.closePhotoModal = this.closePhotoModal.bind(this);
   }
 
   componentDidMount() {
-    const randomId = Math.floor(Math.random() * 100);
+    const randomId = Math.floor(Math.random() * 100) + 1;
     this.getPhotosForBanner(randomId);
   }
 
@@ -30,15 +34,35 @@ class App extends React.Component {
     });
   }
 
+  openPhotoModal() {
+    this.setState({
+      showModal: true,
+    });
+  }
+
+  closePhotoModal() {
+    this.setState({
+      showModal: false,
+    });
+  }
+
   render() {
-    const { photos } = this.state;
+    const { photos, showModal } = this.state;
     return (
       <div>
         <NavPlaceholder />
         <MainBannerDiv>
-          <PhotoBanner photos={photos} />
+
+          <PhotoBanner photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} isOpen={showModal} />
+
+          <SaveThisRestaurantButton />
+
         </MainBannerDiv>
-        <SaveThisRestaurantButton>Save This Restaurant</SaveThisRestaurantButton>
+
+        <PhotoModal show={showModal} closeModal={this.closePhotoModal}>
+          <h1>HELLO!!</h1>
+        </PhotoModal>
+
         <OverviewPlaceholder />
         <h2>50 Photos</h2>
         <hr />
@@ -61,4 +85,5 @@ const NavPlaceholder = styled.div`
 
 const MainBannerDiv = styled.div`
   margin: 10px;
+  position: relative;
 `;
