@@ -21,7 +21,9 @@ class SaveThisRestaurantButton extends React.Component {
   render() {
     const { isSaved } = this.state;
     return (
-      <SaveButton onClick={this.handleClick}>{isSaved ? 'Save this restaurant' : 'Restaurant saved!'}</SaveButton>
+      <ButtonSpan>
+        <SaveButton onClick={this.handleClick}>{isSaved ? 'Save this restaurant' : 'Restaurant saved!'}</SaveButton>
+      </ButtonSpan>
     );
   }
 }
@@ -44,6 +46,12 @@ const SaveButton = styled.button`
   font-weight: 500;
   line-weight: 20px;
   cursor: pointer;
+`;
+
+const ButtonSpan = styled.span`
+  ${SaveButton}: hover {
+    border: 2px solid #da3743;
+  }
 `;
 
 export default SaveThisRestaurantButton;
