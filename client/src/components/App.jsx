@@ -5,6 +5,7 @@ import { faAngleRight, faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
 import PhotoModal from './PhotoModal';
+import fakeDataImg from '../../fakeImgData';
 import ajax from '../lib/ajax';
 
 library.add(faAngleRight);
@@ -53,6 +54,7 @@ class App extends React.Component {
 
   render() {
     const { photos, showModal } = this.state;
+
     return (
       <div>
         <NavPlaceholder />
@@ -64,7 +66,7 @@ class App extends React.Component {
 
         </MainBannerDiv>
 
-        <PhotoModal show={showModal} closeModal={this.closePhotoModal} photos={photos} />
+        <PhotoModal photos={photos} show={showModal} closeModal={this.closePhotoModal} />
 
         <OverviewPlaceholder />
         <h2>50 Photos</h2>

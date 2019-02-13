@@ -13,11 +13,11 @@ const PhotoCarousel = props => (
 
 const CarouselDiv = styled.div`
   position: absolute;
-  top: 0;
-  left: 30%;
-  height: 500px;
-  width: 500px;
-  display: inline-block;
+  top: 5%;
+  left: 35%;
+  height: 600px;
+  width: 600px;
+  display: block;
   transition: 'transform ease-out 0.45s';
 `;
 

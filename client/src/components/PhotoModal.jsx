@@ -4,13 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PhotoCarousel from './PhotoCarousel';
 import PhotoCarouselRightArrow from './PhotoCarouselRightArrow';
 import PhotoCarouselLeftArrow from './PhotoCarouselLeftArrow';
-import fakeDataImg from '../../fakeImgData';
 
 class PhotoModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: fakeDataImg,
       currentImageIndex: 0,
     };
     this.handlePreviousImageClick = this.handlePreviousImageClick.bind(this);
@@ -28,23 +26,24 @@ class PhotoModal extends React.Component {
 
   handleNextImageClick(event) {
     event.preventDefault();
-    const { currentImageIndex, images } = this.state;
+    const { currentImageIndex } = this.state;
+    const { photos } = this.props;
 
     this.setState({
-      currentImageIndex: currentImageIndex !== images.length - 1 ? currentImageIndex + 1 : images.length - 1,
+      currentImageIndex: currentImageIndex !== photos.length - 1 ? currentImageIndex + 1 : photos.length - 1,
     });
   }
 
   render() {
-    const { closeModal, show } = this.props;
-    const { images, currentImageIndex } = this.state;
+    const { closeModal, show, photos } = this.props;
+    const { currentImageIndex } = this.state;
     const showHide = show ? 'photo-modal block' : 'photo-modal none';
 
     return (
       <div className={showHide}>
         <InnerModal>
           <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
-          <PhotoCarousel url={images[currentImageIndex]} />
+          <PhotoCarousel url={photos[currentImageIndex]} />
           <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
         </InnerModal>
 
