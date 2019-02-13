@@ -22,16 +22,16 @@ class PhotoModal extends React.Component {
     const { currentImageIndex } = this.state;
 
     this.setState({
-      currentImageIndex: currentImageIndex - 1,
+      currentImageIndex: currentImageIndex !== 0 ? currentImageIndex - 1 : 0,
     });
   }
 
   handleNextImageClick(event) {
     event.preventDefault();
-    const { currentImageIndex } = this.state;
+    const { currentImageIndex, images } = this.state;
 
     this.setState({
-      currentImageIndex: currentImageIndex + 1,
+      currentImageIndex: currentImageIndex !== images.length - 1 ? currentImageIndex + 1 : images.length - 1,
     });
   }
 
