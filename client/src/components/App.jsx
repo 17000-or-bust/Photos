@@ -64,7 +64,7 @@ class App extends React.Component {
 
         </MainBannerDiv>
 
-        <PhotoModal show={showModal} closeModal={this.closePhotoModal} />
+        <PhotoModal show={showModal} closeModal={this.closePhotoModal} photos={photos} />
 
         <OverviewPlaceholder />
         <h2>50 Photos</h2>

@@ -4,12 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PhotoCarousel from './PhotoCarousel';
 import PhotoCarouselRightArrow from './PhotoCarouselRightArrow';
 import PhotoCarouselLeftArrow from './PhotoCarouselLeftArrow';
+import fakeDataImg from '../../fakeImgData';
 
 class PhotoModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      images: fakeDataImg,
+      currentImage: 0,
     };
     this.handlePreviousImageClick = this.handlePreviousImageClick.bind(this);
     this.handleNextImageClick = this.handleNextImageClick.bind(this);
@@ -17,28 +19,39 @@ class PhotoModal extends React.Component {
 
   handlePreviousImageClick(event) {
     event.preventDefault();
-    console.log('GO BACK');
+    this.setState(prevPhoto => ({
+      currentImage: prevPhoto.currentImage - 1,
+    }));
   }
 
   handleNextImageClick(event) {
     event.preventDefault();
-    console.log('NEXT');
+
+    this.setState(prevPhoto => ({
+      currentImage: prevPhoto.currentImage + 1,
+    }));
   }
 
 
   render() {
     const { closeModal, show } = this.props;
+    const { images } = this.state;
     const showHide = show ? 'photo-modal block' : 'photo-modal none';
 
     return (
       <div className={showHide}>
         <InnerModal>
-          <PhotoCarousel />
-
+          <ImgWrapper style={{ transform: 'translateX(100px)' }}>
+            {
+              images.map((image, i) => (
+                <PhotoCarousel image={image} key={i} />
+              ))
+            }
+          </ImgWrapper>
           <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
           <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
-
         </InnerModal>
+
         <ExitButton>
           <FontAwesomeIcon type="button" onClick={closeModal} icon="times" />
         </ExitButton>
@@ -49,7 +62,6 @@ class PhotoModal extends React.Component {
 
 const InnerModal = styled.section`
   position: fixed;
-  background: lightyellow;
   width: 80%;
   height: 80%;
   top: 50%;
@@ -67,6 +79,10 @@ const ExitButton = styled.div`
   font-style: normal;
   font-weight: normal;
   outline: none;
+`;
+
+const ImgWrapper = styled.div`
+  transition: 'transform ease-out 0.45s'
 `;
 
 export default PhotoModal;
