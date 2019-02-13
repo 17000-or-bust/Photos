@@ -5,7 +5,6 @@ import { faAngleRight, faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
 import PhotoModal from './PhotoModal';
-import fakeDataImg from '../../fakeImgData';
 import ajax from '../lib/ajax';
 
 library.add(faAngleRight);
@@ -16,7 +15,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: [],
+      photos: [{}],
       showModal: false,
       randomId: Math.floor(Math.random() * 100) + 1,
     };

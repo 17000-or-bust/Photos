@@ -28,7 +28,6 @@ class PhotoModal extends React.Component {
         console.log(err);
         return;
       }
-      console.log('data', data);
       this.setState({
         images: data,
       });
@@ -57,14 +56,13 @@ class PhotoModal extends React.Component {
   render() {
     const { closeModal, show } = this.props;
     const { currentImageIndex, images } = this.state;
-    console.log('photos', images);
     const showHide = show ? 'photo-modal block' : 'photo-modal none';
 
     return (
       <div className={showHide}>
         <InnerModal>
           <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
-          <PhotoCarousel url={images[currentImageIndex]} />
+          <PhotoCarousel url={images[currentImageIndex].image_url} />
           <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
         </InnerModal>
 
