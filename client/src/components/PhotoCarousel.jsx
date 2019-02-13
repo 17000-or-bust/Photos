@@ -2,26 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PhotoCarousel = props => (
-  <CarouselDiv>
-    <CurrentImg
-      src={props.image}
-      alt=""
-    />
-  </CarouselDiv>
-
+  <CarouselDiv style={{
+    backgroundImage: `url(${props.url})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+  />
 );
 
 const CarouselDiv = styled.div`
   position: absolute;
-  top: 20%
-  left: 20%
-  display: block;
-`;
-
-const CurrentImg = styled.img`
-  display: block;
-  height: 600px;
-  width: 600px;
+  top: 0;
+  left: 30%;
+  height: 500px;
+  width: 500px;
+  display: inline-block;
+  transition: 'transform ease-out 0.45s';
 `;
 
 export default PhotoCarousel;

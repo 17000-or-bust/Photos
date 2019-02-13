@@ -11,7 +11,7 @@ class PhotoModal extends React.Component {
     super(props);
     this.state = {
       images: fakeDataImg,
-      currentImage: 0,
+      currentImageIndex: 0,
     };
     this.handlePreviousImageClick = this.handlePreviousImageClick.bind(this);
     this.handleNextImageClick = this.handleNextImageClick.bind(this);
@@ -19,36 +19,32 @@ class PhotoModal extends React.Component {
 
   handlePreviousImageClick(event) {
     event.preventDefault();
-    this.setState(prevPhoto => ({
-      currentImage: prevPhoto.currentImage - 1,
-    }));
+    const { currentImageIndex } = this.state;
+
+    this.setState({
+      currentImageIndex: currentImageIndex - 1,
+    });
   }
 
   handleNextImageClick(event) {
     event.preventDefault();
+    const { currentImageIndex } = this.state;
 
-    this.setState(prevPhoto => ({
-      currentImage: prevPhoto.currentImage + 1,
-    }));
+    this.setState({
+      currentImageIndex: currentImageIndex + 1,
+    });
   }
-
 
   render() {
     const { closeModal, show } = this.props;
-    const { images } = this.state;
+    const { images, currentImageIndex } = this.state;
     const showHide = show ? 'photo-modal block' : 'photo-modal none';
 
     return (
       <div className={showHide}>
         <InnerModal>
-          <ImgWrapper style={{ transform: 'translateX(100px)' }}>
-            {
-              images.map((image, i) => (
-                <PhotoCarousel image={image} key={i} />
-              ))
-            }
-          </ImgWrapper>
           <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
+          <PhotoCarousel url={images[currentImageIndex]} />
           <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
         </InnerModal>
 
@@ -79,10 +75,6 @@ const ExitButton = styled.div`
   font-style: normal;
   font-weight: normal;
   outline: none;
-`;
-
-const ImgWrapper = styled.div`
-  transition: 'transform ease-out 0.45s'
 `;
 
 export default PhotoModal;
