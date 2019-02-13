@@ -3,23 +3,21 @@ const webpack = require('webpack');
 module.exports = {
   entry: './client/src/index.jsx',
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      }
-    ]
+    rules: [{
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: ['babel-loader'],
+    }],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
   },
   output: {
-    path: __dirname + '/client/dist',
+    path: `${__dirname}/client/dist`,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   devServer: {
-    contentBase: './client/dist'
-  }
+    contentBase: './client/dist',
+  },
 };
