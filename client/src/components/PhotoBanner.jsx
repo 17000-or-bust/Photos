@@ -2,28 +2,18 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import Photo from './Photo';
 
-class PhotoBanner extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-
-    };
-  }
-
-  render() {
-    const { photos, openModal, closeModal } = this.props;
-    return (
-      <PhotoDiv>
-        <PhotoInnerDiv>
-          {photos.map(photo => (
-            <Photo photo={photo} key={photo.id} openModal={openModal} closeModal={closeModal} />
-          ))}
-        </PhotoInnerDiv>
-      </PhotoDiv>
-    );
-  }
-}
+const PhotoBanner = (props) => {
+  const { photos, openModal, closeModal } = props;
+  return (
+    <PhotoDiv>
+      <PhotoInnerDiv>
+        {photos.map(photo => (
+          <Photo photo={photo} key={photo.id} openModal={openModal} closeModal={closeModal} />
+        ))}
+      </PhotoInnerDiv>
+    </PhotoDiv>
+  );
+};
 
 const scroll = keyframes`
   {
