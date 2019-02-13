@@ -18,14 +18,15 @@ class App extends React.Component {
     this.state = {
       photos: [],
       showModal: false,
+      randomId: Math.floor(Math.random() * 100) + 1,
     };
     this.openPhotoModal = this.openPhotoModal.bind(this);
     this.closePhotoModal = this.closePhotoModal.bind(this);
   }
 
   componentDidMount() {
-    const randomId = Math.floor(Math.random() * 100) + 1;
-    this.getPhotosForBanner(randomId);
+    // const randomId = Math.floor(Math.random() * 100) + 1;
+    this.getPhotosForBanner(this.state.randomId);
   }
 
   getPhotosForBanner(id) {
@@ -53,7 +54,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { photos, showModal } = this.state;
+    const { photos, showModal, randomId } = this.state;
 
     return (
       <div>
@@ -66,7 +67,7 @@ class App extends React.Component {
 
         </MainBannerDiv>
 
-        <PhotoModal photos={photos} show={showModal} closeModal={this.closePhotoModal} />
+        <PhotoModal randomId={randomId} photos={photos} show={showModal} closeModal={this.closePhotoModal} />
 
         <OverviewPlaceholder />
         <h2>50 Photos</h2>

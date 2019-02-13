@@ -4,15 +4,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PhotoCarousel from './PhotoCarousel';
 import PhotoCarouselRightArrow from './PhotoCarouselRightArrow';
 import PhotoCarouselLeftArrow from './PhotoCarouselLeftArrow';
+import ajax from '../lib/ajax';
 
 class PhotoModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      images: this.props.photos,
       currentImageIndex: 0,
+      randomId: this.props.randomId,
     };
     this.handlePreviousImageClick = this.handlePreviousImageClick.bind(this);
     this.handleNextImageClick = this.handleNextImageClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.getImagesForBanner(this.state.randomId);
+  }
+
+  getImagesForBanner(id) {
+    ajax.getPhotos(id, (err, data) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log('data', data);
+      this.setState({
+        images: data,
+      });
+    });
   }
 
   handlePreviousImageClick(event) {
@@ -26,24 +46,25 @@ class PhotoModal extends React.Component {
 
   handleNextImageClick(event) {
     event.preventDefault();
-    const { currentImageIndex } = this.state;
-    const { photos } = this.props;
+    const { currentImageIndex, images } = this.state;
+    // const { photos } = this.props;
 
     this.setState({
-      currentImageIndex: currentImageIndex !== photos.length - 1 ? currentImageIndex + 1 : photos.length - 1,
+      currentImageIndex: currentImageIndex !== images.length - 1 ? currentImageIndex + 1 : images.length - 1,
     });
   }
 
   render() {
-    const { closeModal, show, photos } = this.props;
-    const { currentImageIndex } = this.state;
+    const { closeModal, show } = this.props;
+    const { currentImageIndex, images } = this.state;
+    console.log('photos', images);
     const showHide = show ? 'photo-modal block' : 'photo-modal none';
 
     return (
       <div className={showHide}>
         <InnerModal>
           <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
-          <PhotoCarousel url={photos[currentImageIndex]} />
+          <PhotoCarousel url={images[currentImageIndex]} />
           <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
         </InnerModal>
 
