@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAngleRight, faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleRight, faAngleLeft, faTimes, faBookmark,
+} from '@fortawesome/free-solid-svg-icons';
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
 import PhotoModal from './PhotoModal';
@@ -11,6 +13,7 @@ import ajax from '../lib/ajax';
 library.add(faAngleRight);
 library.add(faAngleLeft);
 library.add(faTimes);
+library.add(faBookmark);
 
 class App extends React.Component {
   constructor(props) {
