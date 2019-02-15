@@ -17,8 +17,12 @@ const PhotoBanner = (props) => {
 
 const scroll = keyframes`
   {
-    0% { left: 0; }
-    100% { left: -100%; }
+    0%{
+      transform: translate3d(0, 0, 0);
+    }
+    100%{
+      transform: translate3d(-1692px, 0, 0);
+    }
   }
 `;
 
