@@ -58,7 +58,6 @@ const Username = styled.div`
 const Date = styled.span`
   display: in-line block;
   font-weight: 200;
-  font-weight: 200;
   font-size: 1em;
   height: auto;
   position: relative;

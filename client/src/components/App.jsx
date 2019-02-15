@@ -115,7 +115,6 @@ const Display = styled.div`
   display: block;
   width: auto;
   height: auto;
-  border: 1px solid black;
 `;
 
 const NumberOfPhotos = styled.h2`

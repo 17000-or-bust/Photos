@@ -18,9 +18,10 @@ const PhotoDisplay = (props) => {
 export default PhotoDisplay;
 
 const PhotoDiv = styled.div`
-  margin-block: 0;
-  display: inline-block;
+  height: 290px;
+  padding: 5px;
   overflow: hidden;
+  display: block;
   box-sizing: border-box;
   position: relative;
 `;
