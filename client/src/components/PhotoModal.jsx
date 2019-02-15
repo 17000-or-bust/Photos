@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import moment from 'moment';
 import PhotoCarousel from './PhotoCarousel';
 import PhotoCarouselRightArrow from './PhotoCarouselRightArrow';
 import PhotoCarouselLeftArrow from './PhotoCarouselLeftArrow';
@@ -61,9 +62,11 @@ class PhotoModal extends React.Component {
     return (
       <div className={showHide}>
         <InnerModal>
-          <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
-          <PhotoCarousel url={images[currentImageIndex].image_url} />
-          <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
+          <Wrapper>
+            <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
+            <PhotoCarousel url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} />
+            <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
+          </Wrapper>
         </InnerModal>
 
         <ExitButton>
@@ -76,11 +79,16 @@ class PhotoModal extends React.Component {
 
 const InnerModal = styled.section`
   position: fixed;
-  width: 80%;
-  height: 80%;
+  width: 660px;
+  height: 645px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+const Wrapper = styled.div`
+  display: block;
+  margin: 35px;
 `;
 
 const ExitButton = styled.div`
