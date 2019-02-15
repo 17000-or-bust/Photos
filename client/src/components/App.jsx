@@ -66,7 +66,6 @@ class App extends React.Component {
 
         </MainBannerDiv>
 
-        <PhotoModal randomId={randomId} photos={photos} show={showModal} closeModal={this.closePhotoModal} />
 
         <OverviewPlaceholder />
         <PhotoContainer>
@@ -79,6 +78,7 @@ class App extends React.Component {
             <PhotoDisplay photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} isOpen={showModal} />
           </Display>
         </PhotoContainer>
+        <PhotoModal randomId={randomId} photos={photos} show={showModal} closeModal={this.closePhotoModal} />
       </div>
     );
   }
