@@ -1,13 +1,13 @@
 # Project Name
 
-> Project description
+> This module displays photos and a modal with an image carousel
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/table-for-five/reviews.git
+  - https://github.com/table-for-five/menu.git
+  - https://github.com/table-for-five/overview.git
+  - https://github.com/table-for-five/reservations.git
 
 ## Table of Contents
 
@@ -35,5 +35,6 @@ From within the root directory:
 ```sh
 npm install -g webpack
 npm install
+npm install -g nodemon
 ```
 

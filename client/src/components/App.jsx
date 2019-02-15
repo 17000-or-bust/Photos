@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAngleRight, faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleRight, faAngleLeft, faTimes, faBookmark,
+} from '@fortawesome/free-solid-svg-icons';
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
 import PhotoModal from './PhotoModal';
+import PhotoDisplay from './PhotoDisplay';
 import ajax from '../lib/ajax';
 
 library.add(faAngleRight);
 library.add(faAngleLeft);
 library.add(faTimes);
+library.add(faBookmark);
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +28,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // const randomId = Math.floor(Math.random() * 100) + 1;
     this.getPhotosForBanner(this.state.randomId);
   }
 
@@ -66,11 +69,19 @@ class App extends React.Component {
 
         </MainBannerDiv>
 
-        <PhotoModal randomId={randomId} photos={photos} show={showModal} closeModal={this.closePhotoModal} />
 
         <OverviewPlaceholder />
-        <h2>50 Photos</h2>
-        <hr />
+        <PhotoContainer>
+          <NumberOfPhotos>
+            {photos.length}
+            {' '}
+            Photos
+          </NumberOfPhotos>
+          <Display>
+            <PhotoDisplay photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} isOpen={showModal} />
+          </Display>
+        </PhotoContainer>
+        <PhotoModal randomId={randomId} photos={photos} show={showModal} closeModal={this.closePhotoModal} />
       </div>
     );
   }
@@ -80,6 +91,9 @@ export default App;
 
 const OverviewPlaceholder = styled.div`
   height: 30rem;
+  margin: 0 154px;
+  padding: 16px
+  width: 1000px;
   background: url(https://via.placeholder.com/1300x500?text=Restaurant+Overview+Placeholder);
 `;
 
@@ -92,3 +106,47 @@ const MainBannerDiv = styled.div`
   margin: 10px;
   position: relative;
 `;
+
+const PhotoContainer = styled.div`
+  margin: 0 154px 154px 154px;
+  padding: 16px
+  width: 1000px;
+  height: auto;
+`;
+
+const Display = styled.div`
+  display: block;
+  width: auto;
+  height: auto;
+`;
+
+const NumberOfPhotos = styled.h2`
+  font-family: 'Istok Web', sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 2em;
+  color: #2d333f
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #d8d9db;
+  margin-bottom: 1.25em;
+  display: flex;
+  justify-content: space-between;
+`;
+
+// const MediumPic = styled.div`
+//   height: 200px;
+//   width: 200px;
+//   border: 1px solid #000;
+// `;
+
+// const LargePic = styled.span`
+//   height: 380px;
+//   width: 380px;
+//   vborder: 1px solid #000;
+// `;
+
+// const SmallPic = styled.div`
+//   height: 150px;
+//   width: 150px;
+//   border: 1px solid #000;
+// `;
