@@ -64,7 +64,7 @@ const SaveButton = styled.button`
   padding: 11px 15px;
   position: absolute;
   top: 10%;
-  left: 85%;
+  left: 80%;
   text-align: center;
   outline: none;
   font-size: 14px;
@@ -74,6 +74,8 @@ const SaveButton = styled.button`
 `;
 
 const ButtonSpan = styled.span`
+  height: 50%;
+  width: 50%;
   ${SaveButton}: hover {
     border: 2px solid #da3743;
   }

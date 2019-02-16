@@ -8,9 +8,7 @@ const PhotoDisplay = (props) => {
 
   return (
     <PhotoDiv>
-      {photos.map(photo => (
-        <PhotoDisplayEntry photo={photo} key={photo.id} openModal={openModal} closeModal={closeModal} />
-      ))}
+      <PhotoDisplayEntry photos={photos} openModal={openModal} closeModal={closeModal} />
     </PhotoDiv>
   );
 };
@@ -18,9 +16,9 @@ const PhotoDisplay = (props) => {
 export default PhotoDisplay;
 
 const PhotoDiv = styled.div`
-  height: 290px;
+  height: auto;
   padding: 5px;
-  overflow: hidden;
+  // overflow: hidden;
   display: block;
   box-sizing: border-box;
   position: relative;
