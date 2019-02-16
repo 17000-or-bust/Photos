@@ -11,14 +11,7 @@ import {
   wrap,
 } from 'module';
 import App from '../client/src/components/App';
-import Photo from '../client/src/components/Photo';
-import PhotoBanner from '../client/src/components/PhotoBanner';
-import PhotoCarousel from '../client/src/components/PhotoCarousel';
-import PhotoCarouselLeftArrow from '../client/src/components/PhotoCarouselLeftArrow';
-import PhotoCarouselRightArrow from '../client/src/components/PhotoCarouselRightArrow';
-import PhotoDisplay from '../client/src/components/PhotoDisplay';
-import PhotoModal from '../client/src/components/PhotoModal';
-import SaveThisRestaurantButton from '../client/src/components/SaveThisRestaurantButton';
+
 
 configure({
   adapter: new Adapter(),
@@ -35,5 +28,9 @@ describe('App', () => {
 
   it('should render bookmark button without throwing an error', () => {
     expect(shallow(<App />).find('SaveThisRestaurantButton').exists()).toBe(true);
+  });
+
+  it('should render photo modal without throwing an error', () => {
+    expect(shallow(<App />).find('PhotoModal').exists()).toBe(true);
   });
 });
