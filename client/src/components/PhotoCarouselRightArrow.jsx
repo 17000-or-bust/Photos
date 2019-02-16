@@ -13,9 +13,9 @@ const RightArrowDiv = styled.div`
   &:hover {
     color: #6f737b;
   }
-  font-size: 3em;
+  font-size: 2em;
   position: absolute;
-  top: 47%;
+  top: 50%;
   right: 0;
   font-family: icons;
   font-style: normal;

@@ -38,21 +38,23 @@ const Caption = styled.span`
   color: #fff;
   height: auto;
   position: relative;
-  margin: 10px 5px 1px 0;
-  font-size: 1.25em;
-  font-family: 'Istok Web', sans-serif;
+  margin: 10px 5px 0 0;
+  font-size: 1em;
+  // font-family: 'Istok Web', sans-serif;
+  font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   font-weight: 700;
 `;
 
 const Username = styled.div`
   display: block;
-  font-size: 1em;
+  font-size: .85em;
   font-weight: 200;
   height: auto;
   position: relative;
   margin: 0;
   color: #fff;
-  font-family: 'Istok Web', sans-serif;
+  // font-family: 'Istok Web', sans-serif;
+  font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 `;
 
 const Date = styled.span`
@@ -63,7 +65,8 @@ const Date = styled.span`
   position: relative;
   margin-top: 10px;
   color: #fff;
-  font-family: 'Istok Web', sans-serif;
+  // font-family: 'Istok Web', sans-serif;
+  font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 `;
 
 const CaptionWrapper = styled.div`
