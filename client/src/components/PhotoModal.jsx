@@ -81,7 +81,7 @@ const InnerModal = styled.section`
   position: fixed;
   width: 660px;
   height: 645px;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 `;

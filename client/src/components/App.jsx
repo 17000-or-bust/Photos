@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faAngleRight, faAngleLeft, faTimes, faBookmark,
+  faAngleRight, faAngleLeft, faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
@@ -13,13 +13,12 @@ import ajax from '../lib/ajax';
 library.add(faAngleRight);
 library.add(faAngleLeft);
 library.add(faTimes);
-library.add(faBookmark);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: [{}],
+      photos: [{ image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }],
       showModal: false,
       randomId: Math.floor(Math.random() * 100) + 1,
     };
@@ -89,16 +88,16 @@ class App extends React.Component {
 export default App;
 
 const OverviewPlaceholder = styled.div`
-  height: 30rem;
-  margin: 0 154px;
+  height: 10rem;
+  margin: 0 200px;
   padding: 16px
-  width: 1000px;
-  background: url(https://via.placeholder.com/1300x500?text=Restaurant+Overview+Placeholder);
+  width: 570px;
+  background: url(https://via.placeholder.com/600x200?text=Restaurant+Overview+Placeholder);
 `;
 
 const NavPlaceholder = styled.div`
-  height: 10rem;
-  background: url(https://via.placeholder.com/1300x177?text=Restaurant+NavBar+Placeholder);
+  height: 5rem;
+  background: url(https://via.placeholder.com/1300x80?text=Restaurant+NavBar+Placeholder);
 `;
 
 const MainBannerDiv = styled.div`
@@ -107,9 +106,8 @@ const MainBannerDiv = styled.div`
 `;
 
 const PhotoContainer = styled.div`
-  margin: 0 154px 154px 154px;
-  padding: 16px
-  width: 1000px;
+  margin-left: 200px;
+  width: 620px;
   height: auto;
 `;
 
@@ -121,31 +119,13 @@ const Display = styled.div`
 
 const NumberOfPhotos = styled.h2`
   font-family: 'Istok Web', sans-serif;
-  font-size: 2em;
-  font-weight: 700;
-  line-height: 2em;
+  font-size: 1.35em;
+  font-weight: 600;
+  line-height: 1.5em;
   color: #2d333f
-  padding-bottom: 1.5em;
+  padding-bottom: .5em;
   border-bottom: 1px solid #d8d9db;
-  margin-bottom: 1.25em;
+  margin-bottom: .75em;
   display: flex;
   justify-content: space-between;
 `;
-
-// const MediumPic = styled.div`
-//   height: 200px;
-//   width: 200px;
-//   border: 1px solid #000;
-// `;
-
-// const LargePic = styled.span`
-//   height: 380px;
-//   width: 380px;
-//   vborder: 1px solid #000;
-// `;
-
-// const SmallPic = styled.div`
-//   height: 150px;
-//   width: 150px;
-//   border: 1px solid #000;
-// `;

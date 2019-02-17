@@ -37,7 +37,7 @@ const PhotoInnerDiv = styled.div`
 
 const PhotoDiv = styled.div`
   display: inline-block;
-  height: 19.53em;
+  height: 19em;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
