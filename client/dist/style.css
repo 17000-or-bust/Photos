@@ -14,3 +14,13 @@
 .none {
   display: none;
 }
+
+.flag-modal {
+  position: fixed;
+  top: 30%;
+  left: 27%;
+  width: 50%;
+  height: auto;
+  background: rgb(255, 255, 255);
+  border-radius: 1%;
+}

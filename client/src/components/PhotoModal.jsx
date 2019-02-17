@@ -47,7 +47,6 @@ class PhotoModal extends React.Component {
   handleNextImageClick(event) {
     event.preventDefault();
     const { currentImageIndex, images } = this.state;
-    // const { photos } = this.props;
 
     this.setState({
       currentImageIndex: currentImageIndex !== images.length - 1 ? currentImageIndex + 1 : images.length - 1,
@@ -55,7 +54,9 @@ class PhotoModal extends React.Component {
   }
 
   render() {
-    const { closeModal, show } = this.props;
+    const {
+      closeModal, show, showFlag, openFlag, closeFlag,
+    } = this.props;
     const { currentImageIndex, images } = this.state;
     const showHide = show ? 'photo-modal block' : 'photo-modal none';
 
@@ -64,7 +65,7 @@ class PhotoModal extends React.Component {
         <InnerModal>
           <Wrapper>
             <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
-            <PhotoCarousel url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} />
+            <PhotoCarousel openFlag={openFlag} closeFlag={closeFlag} showFlag={showFlag} url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} />
             <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
           </Wrapper>
         </InnerModal>

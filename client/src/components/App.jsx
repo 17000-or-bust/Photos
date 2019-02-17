@@ -21,9 +21,12 @@ class App extends React.Component {
       photos: [{ image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }],
       showModal: false,
       randomId: Math.floor(Math.random() * 100) + 1,
+      showFlagModal: false,
     };
     this.openPhotoModal = this.openPhotoModal.bind(this);
     this.closePhotoModal = this.closePhotoModal.bind(this);
+    this.openFlagModal = this.openFlagModal.bind(this);
+    this.closeFlagModal = this.closeFlagModal.bind(this);
   }
 
   componentDidMount() {
@@ -54,8 +57,22 @@ class App extends React.Component {
     });
   }
 
+  openFlagModal() {
+    this.setState({
+      showFlagModal: true,
+    });
+  }
+
+  closeFlagModal() {
+    this.setState({
+      showFlagModal: false,
+    });
+  }
+
   render() {
-    const { photos, showModal, randomId } = this.state;
+    const {
+      photos, showModal, randomId, showFlagModal,
+    } = this.state;
 
     return (
       <div>
@@ -79,7 +96,7 @@ class App extends React.Component {
             <PhotoDisplay photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} isOpen={showModal} />
           </Display>
         </PhotoContainer>
-        <PhotoModal randomId={randomId} photos={photos} show={showModal} closeModal={this.closePhotoModal} />
+        <PhotoModal randomId={randomId} photos={photos} show={showModal} closeModal={this.closePhotoModal} showFlag={showFlagModal} openFlag={this.openFlagModal} closeFlag={this.closeFlagModal} />
       </div>
     );
   }
