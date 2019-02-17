@@ -13,13 +13,20 @@ const PhotoCarousel = props => (
       />
     </div>
     <div>
-      <CaptionWrapper>
-        <Caption>{props.caption}</Caption>
-        <Date>{props.date}</Date>
-      </CaptionWrapper>
-      <div>
-        <Username>{props.username}</Username>
-      </div>
+      <span>
+        <CaptionWrapper>
+          <Caption>{props.caption}</Caption>
+          <Date>{props.date}</Date>
+        </CaptionWrapper>
+        <div>
+          <Username>{props.username}</Username>
+        </div>
+      </span>
+      <FlagSpan>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path id="_24._Tiny_Flag_Icon" fill="#fff" dataName="24. Tiny Flag Icon" d="M485,475H469v12h-2V463h18l-3,6Zm-16-10v8h13l-2-4,2-4H469Z" transform="translate(-464 -463)" />
+        </svg>
+      </FlagSpan>
     </div>
   </div>
 );
@@ -63,12 +70,17 @@ const Date = styled.span`
   position: relative;
   margin-top: 10px;
   color: #fff;
-  // font-family: 'Istok Web', sans-serif;
   font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 `;
 
 const CaptionWrapper = styled.div`
   margin: 5px 0;
+`;
+
+const FlagSpan = styled.span`
+  position: absolute;
+  right: 5.5%;
+  bottom: -3%;
 `;
 
 export default PhotoCarousel;
