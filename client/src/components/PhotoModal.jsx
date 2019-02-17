@@ -47,7 +47,6 @@ class PhotoModal extends React.Component {
   handleNextImageClick(event) {
     event.preventDefault();
     const { currentImageIndex, images } = this.state;
-    // const { photos } = this.props;
 
     this.setState({
       currentImageIndex: currentImageIndex !== images.length - 1 ? currentImageIndex + 1 : images.length - 1,

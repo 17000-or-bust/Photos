@@ -79,7 +79,7 @@ const LastSmallImg = styled.img`
   height: 90.84px;
   width: 90.84px;
   margin: 0 2px;
-  z-index: 1;
+  z-index: -1;
   position: absolute;
 `;
 
@@ -90,10 +90,10 @@ const LastSmallOverlay = styled.div`
   width: 90.84px;
   margin: 0 2px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 0;
   &:hover {
     background-color: rgba(0, 0, 0, 0.8)
-  }
+  };
 `;
 
 const TextDiv = styled.div`

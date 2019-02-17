@@ -4,7 +4,6 @@ import PhotoDisplayEntry from './PhotoDisplayEntry';
 
 const PhotoDisplay = (props) => {
   const { photos, openModal, closeModal } = props;
-  console.log('photos', photos);
 
   return (
     <PhotoDiv>
