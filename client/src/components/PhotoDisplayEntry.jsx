@@ -35,7 +35,13 @@ const PhotoDisplayEntry = props => (
       <div>
         <LastSmallImg onClick={event => props.openModal(event)} src={props.photos[8].image_url} alt="" />
         <LastSmallOverlay onClick={event => props.openModal(event)}>
-          <TextDiv>+ 20 more</TextDiv>
+          <TextDiv>
+            +
+            {' '}
+            {props.photos.length - 9}
+            {' '}
+            more
+          </TextDiv>
         </LastSmallOverlay>
       </div>
     </span>
