@@ -18,7 +18,6 @@ export default PhotoDisplay;
 const PhotoDiv = styled.div`
   height: auto;
   padding: 5px;
-  // overflow: hidden;
   display: block;
   box-sizing: border-box;
   position: relative;

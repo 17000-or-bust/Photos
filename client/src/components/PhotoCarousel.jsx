@@ -40,7 +40,6 @@ const Caption = styled.span`
   position: relative;
   margin: 10px 5px 0 0;
   font-size: 1em;
-  // font-family: 'Istok Web', sans-serif;
   font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   font-weight: 700;
 `;
@@ -53,7 +52,6 @@ const Username = styled.div`
   position: relative;
   margin: 0;
   color: #fff;
-  // font-family: 'Istok Web', sans-serif;
   font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 `;
 

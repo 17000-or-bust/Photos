@@ -33,7 +33,10 @@ const PhotoDisplayEntry = props => (
         <SmallImg onClick={event => props.openModal(event)} src={props.photos[7].image_url} alt="" />
       </div>
       <div>
-        <SmallImg onClick={event => props.openModal(event)} src={props.photos[8].image_url} alt="" />
+        <LastSmallImg onClick={event => props.openModal(event)} src={props.photos[8].image_url} alt="" />
+        <LastSmallOverlay onClick={event => props.openModal(event)}>
+          <TextDiv>+ 20 more</TextDiv>
+        </LastSmallOverlay>
       </div>
     </span>
   </ImgContainer>
@@ -64,4 +67,34 @@ const SmallImg = styled.img`
   height: 90.84px;
   width: 90.84px;
   margin: 0 2px;
+`;
+
+const LastSmallImg = styled.img`
+  height: 90.84px;
+  width: 90.84px;
+  margin: 0 2px;
+  z-index: 1;
+  position: absolute;
+`;
+
+const LastSmallOverlay = styled.div`
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  height: 90.84px;
+  width: 90.84px;
+  margin: 0 2px;
+  cursor: pointer;
+  z-index: 2;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8)
+  }
+`;
+
+const TextDiv = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  font-size: 12px;
+  font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  color: white;
 `;
