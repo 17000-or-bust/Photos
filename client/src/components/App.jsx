@@ -18,7 +18,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: [{ image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }, { image_url: '' }],
+      photos: [{}, {}, {}, {}, {}, {}, {}, {}, {}],
       showModal: false,
       randomId: Math.floor(Math.random() * 100) + 1,
       showFlagModal: false,

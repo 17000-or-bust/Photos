@@ -22,15 +22,31 @@ describe('App', () => {
     expect(shallow(<App />).exists()).toBe(true);
   });
 
-  it('should render PhotoBanner without throwing an error', () => {
+  it('should have PhotoBanner as child component', () => {
     expect(shallow(<App />).find('PhotoBanner').exists()).toBe(true);
   });
 
-  it('should render bookmark button without throwing an error', () => {
+  it('should have SaveThisRestaurantButton as child component', () => {
     expect(shallow(<App />).find('SaveThisRestaurantButton').exists()).toBe(true);
   });
 
-  it('should render photo modal without throwing an error', () => {
+  it('should have PhotoModal as child component', () => {
     expect(shallow(<App />).find('PhotoModal').exists()).toBe(true);
+  });
+
+  it('should check for photos state', () => {
+    expect(shallow(<App />).state()).toHaveProperty('photos');
+  });
+
+  it('should check for randomId state', () => {
+    expect(shallow(<App />).state()).toHaveProperty('randomId');
+  });
+
+  it('should check for showModal state', () => {
+    expect(shallow(<App />).state()).toHaveProperty('showModal');
+  });
+
+  it('should check for showFlagModal state', () => {
+    expect(shallow(<App />).state()).toHaveProperty('showFlagModal');
   });
 });
