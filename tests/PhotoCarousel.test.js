@@ -1,15 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {
   configure,
-  mount,
   shallow,
-  render,
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {
-  wrap,
-} from 'module';
 import PhotoCarousel from '../client/src/components/PhotoCarousel';
 import PhotoCarouselLeftArrow from '../client/src/components/PhotoCarouselLeftArrow';
 import PhotoCarouselRightArrow from '../client/src/components/PhotoCarouselRightArrow';
@@ -19,7 +13,7 @@ configure({
 });
 
 describe('Photo Carousel', () => {
-  it('should render PhotoCarouselwithout throwing an error', () => {
+  it('should render PhotoCarousel without throwing an error', () => {
     expect(shallow(<PhotoCarousel />).exists()).toBe(true);
   });
 

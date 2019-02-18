@@ -2,14 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   configure,
-  mount,
   shallow,
-  render,
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {
-  wrap,
-} from 'module';
 import PhotoCarouselRightArrow from '../client/src/components/PhotoCarouselRightArrow';
 
 configure({
@@ -18,7 +13,7 @@ configure({
 
 describe('Photo Carousel Right Arrow', () => {
   it('should render PhotoCarouselRightArrow without throwing an error', () => {
-    expect(shallow(<PhotoCarouselRightArrow/>).exists()).toBe(true);
+    expect(shallow(<PhotoCarouselRightArrow />).exists()).toBe(true);
   });
 
   it('should have left arrow from font awesome', () => {

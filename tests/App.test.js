@@ -1,17 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {
   configure,
   mount,
   shallow,
-  render,
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {
-  wrap,
-} from 'module';
+import toJson from 'enzyme-to-json';
 import App from '../client/src/components/App';
-
 
 configure({
   adapter: new Adapter(),
@@ -48,5 +43,10 @@ describe('App', () => {
 
   it('should check for showFlagModal state', () => {
     expect(shallow(<App />).state()).toHaveProperty('showFlagModal');
+  });
+
+  it('Mounts to match snapshot', () => {
+    const wrap = mount(<App />);
+    expect(toJson(wrap)).toMatchSnapshot();
   });
 });

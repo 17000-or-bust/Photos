@@ -1,15 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {
   configure,
-  mount,
   shallow,
-  render,
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {
-  wrap,
-} from 'module';
 import SaveThisRestaurantButton from '../client/src/components/SaveThisRestaurantButton';
 
 configure({
