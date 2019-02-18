@@ -11,7 +11,7 @@ class PhotoModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: this.props.photos,
+      images: [{}],
       currentImageIndex: 0,
       randomId: this.props.randomId,
     };
