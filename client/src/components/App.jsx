@@ -71,7 +71,6 @@ class App extends React.Component {
 
     return (
       <div>
-        <NavPlaceholder />
         <MainBannerDiv>
 
           <PhotoBanner photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} />
@@ -100,16 +99,10 @@ class App extends React.Component {
 export default App;
 
 const OverviewPlaceholder = styled.div`
-  height: 10rem;
+  height: 400px;
   margin: 0 200px;
-  padding: 16px
-  width: 570px;
-  background: url(https://via.placeholder.com/600x200?text=Restaurant+Overview+Placeholder);
-`;
-
-const NavPlaceholder = styled.div`
-  height: 5rem;
-  background: url(https://via.placeholder.com/1300x80?text=Restaurant+NavBar+Placeholder);
+  width: 620px;
+  background: url(https://via.placeholder.com/620x400?text=Restaurant+Overview+Placeholder);
 `;
 
 const MainBannerDiv = styled.div`
