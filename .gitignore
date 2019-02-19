@@ -25,3 +25,4 @@ build/
 client/dist/bundle.js
 
 database/config.js
+tests/__snapshots__/
