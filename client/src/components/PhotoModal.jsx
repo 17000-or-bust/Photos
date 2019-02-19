@@ -14,13 +14,20 @@ class PhotoModal extends React.Component {
       images: [{}],
       currentImageIndex: 0,
       randomId: this.props.randomId,
+      currentKey: '',
     };
     this.handlePreviousImageClick = this.handlePreviousImageClick.bind(this);
     this.handleNextImageClick = this.handleNextImageClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
     this.getImagesForBanner(this.state.randomId);
+    document.addEventListener('keyup', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keyup', this.handleKeyPress);
   }
 
   getImagesForBanner(id) {
@@ -51,6 +58,21 @@ class PhotoModal extends React.Component {
     this.setState({
       currentImageIndex: currentImageIndex !== images.length - 1 ? currentImageIndex + 1 : images.length - 1,
     });
+  }
+
+  handleKeyPress(event) {
+    event.preventDefault();
+    this.setState({
+      currentKey: event.keyCode,
+    });
+    const { currentKey } = this.state;
+    if (currentKey === 39) {
+      this.handleNextImageClick(event);
+    } else if (currentKey === 37) {
+      this.handlePreviousImageClick(event);
+    } else if (currentKey === 27) {
+      this.props.closeModal();
+    }
   }
 
   render() {
