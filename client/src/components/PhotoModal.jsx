@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import PhotoCarousel from './PhotoCarousel';
 import PhotoCarouselRightArrow from './PhotoCarouselRightArrow';
@@ -12,15 +11,29 @@ class PhotoModal extends React.Component {
     super(props);
     this.state = {
       images: [{}],
-      currentImageIndex: 0,
+      currentImageIndex: this.props.clickedImageIndex,
       randomId: this.props.randomId,
+      currentKey: '',
     };
     this.handlePreviousImageClick = this.handlePreviousImageClick.bind(this);
     this.handleNextImageClick = this.handleNextImageClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
     this.getImagesForBanner(this.state.randomId);
+    document.addEventListener('keyup', this.handleKeyPress);
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentImageIndex: nextProps.clickedImageIndex,
+    });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keyup', this.handleKeyPress);
   }
 
   getImagesForBanner(id) {
@@ -53,6 +66,21 @@ class PhotoModal extends React.Component {
     });
   }
 
+  handleKeyPress(event) {
+    event.preventDefault();
+    this.setState({
+      currentKey: event.keyCode,
+    });
+    const { currentKey } = this.state;
+    if (currentKey === 39) {
+      this.handleNextImageClick(event);
+    } else if (currentKey === 37) {
+      this.handlePreviousImageClick(event);
+    } else if (currentKey === 27) {
+      this.props.closeModal();
+    }
+  }
+
   render() {
     const {
       closeModal, openFlag, closeFlag, displayPhoto, displayFlag,
@@ -63,15 +91,15 @@ class PhotoModal extends React.Component {
       <ModalPhotoDiv style={{ display: displayPhoto }}>
         <InnerModal>
           <Wrapper>
-            <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
-            <PhotoCarousel openFlag={openFlag} closeFlag={closeFlag} displayFlag={displayFlag} url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} />
-            <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
+            <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} imageIndex={currentImageIndex} />
+            <PhotoCarousel openFlag={openFlag} closeFlag={closeFlag} displayFlag={displayFlag} url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} imageIndex={currentImageIndex} />
+            <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} imageIndex={currentImageIndex} images={images} />
           </Wrapper>
         </InnerModal>
 
-        <ExitButton>
-          <FontAwesomeIcon type="button" onClick={closeModal} icon="times" />
-        </ExitButton>
+        <ExitButtonDiv>
+          <ExitButton onClick={closeModal} href="#" />
+        </ExitButtonDiv>
       </ModalPhotoDiv>
     );
   }
@@ -97,19 +125,41 @@ const ModalPhotoDiv = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
 `;
 
-const ExitButton = styled.div`
-  color: #6f737b;
-  font-size: 2em;
+const ExitButtonDiv = styled.div`
   position: absolute;
-  top: 2%;
-  right: 2%;
-  font-family: icons;
-  font-style: normal;
-  font-weight: normal;
+  top: 1%;
+  right: 1%;
   outline: none;
+  cursor: pointer;
+`;
+
+const ExitButton = styled.a`
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 15px;
+  height: 15px;
+  &:before {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 25px;
+    width: 2px;
+    background-color: #6f737b;
+    transform: rotate(45deg);
+  }
+  &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 25px;
+    width: 2px;
+    background-color: #6f737b;
+    transform: rotate(-45deg);
+  }
 `;
 
 export default PhotoModal;

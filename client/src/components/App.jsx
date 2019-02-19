@@ -1,18 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faAngleRight, faAngleLeft, faTimes,
-} from '@fortawesome/free-solid-svg-icons';
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
 import PhotoModal from './PhotoModal';
 import PhotoDisplay from './PhotoDisplay';
 import ajax from '../lib/ajax';
-
-library.add(faAngleRight);
-library.add(faAngleLeft);
-library.add(faTimes);
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +14,7 @@ class App extends React.Component {
       randomId: Math.floor(Math.random() * 100) + 1,
       displayPhoto: 'none',
       displayFlag: 'none',
+      clickedImageIndex: 0,
     };
     this.openPhotoModal = this.openPhotoModal.bind(this);
     this.closePhotoModal = this.closePhotoModal.bind(this);
@@ -45,9 +38,10 @@ class App extends React.Component {
     });
   }
 
-  openPhotoModal() {
+  openPhotoModal(event) {
     this.setState({
       displayPhoto: 'block',
+      clickedImageIndex: parseInt(event.target.dataset.indexNumber),
     });
   }
 
@@ -57,9 +51,10 @@ class App extends React.Component {
     });
   }
 
-  openFlagModal() {
+  openFlagModal(index) {
     this.setState({
       displayFlag: 'block',
+      clickedImageIndex: index,
     });
   }
 
@@ -71,7 +66,7 @@ class App extends React.Component {
 
   render() {
     const {
-      photos, randomId, displayPhoto, displayFlag,
+      photos, randomId, displayPhoto, displayFlag, clickedImageIndex,
     } = this.state;
 
     return (
@@ -96,7 +91,7 @@ class App extends React.Component {
             <PhotoDisplay photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} />
           </Display>
         </PhotoContainer>
-        <PhotoModal randomId={randomId} photos={photos} closeModal={this.closePhotoModal} openFlag={this.openFlagModal} closeFlag={this.closeFlagModal} displayPhoto={displayPhoto} displayFlag={displayFlag} />
+        <PhotoModal randomId={randomId} photos={photos} closeModal={this.closePhotoModal} openFlag={this.openFlagModal} closeFlag={this.closeFlagModal} displayPhoto={displayPhoto} displayFlag={displayFlag} clickedImageIndex={clickedImageIndex} />
       </div>
     );
   }
