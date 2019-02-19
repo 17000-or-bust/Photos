@@ -19,9 +19,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       photos: [{}, {}, {}, {}, {}, {}, {}, {}, {}],
-      showModal: false,
       randomId: Math.floor(Math.random() * 100) + 1,
-      showFlagModal: false,
+      displayPhoto: 'none',
+      displayFlag: 'none',
     };
     this.openPhotoModal = this.openPhotoModal.bind(this);
     this.closePhotoModal = this.closePhotoModal.bind(this);
@@ -47,31 +47,31 @@ class App extends React.Component {
 
   openPhotoModal() {
     this.setState({
-      showModal: true,
+      displayPhoto: 'block',
     });
   }
 
   closePhotoModal() {
     this.setState({
-      showModal: false,
+      displayPhoto: 'none',
     });
   }
 
   openFlagModal() {
     this.setState({
-      showFlagModal: true,
+      displayFlag: 'block',
     });
   }
 
   closeFlagModal() {
     this.setState({
-      showFlagModal: false,
+      displayFlag: 'none',
     });
   }
 
   render() {
     const {
-      photos, showModal, randomId, showFlagModal,
+      photos, randomId, displayPhoto, displayFlag,
     } = this.state;
 
     return (
@@ -79,7 +79,7 @@ class App extends React.Component {
         <NavPlaceholder />
         <MainBannerDiv>
 
-          <PhotoBanner photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} isOpen={showModal} />
+          <PhotoBanner photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} />
 
           <SaveThisRestaurantButton />
 
@@ -93,10 +93,10 @@ class App extends React.Component {
             Photos
           </NumberOfPhotos>
           <Display>
-            <PhotoDisplay photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} isOpen={showModal} />
+            <PhotoDisplay photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} />
           </Display>
         </PhotoContainer>
-        <PhotoModal randomId={randomId} photos={photos} show={showModal} closeModal={this.closePhotoModal} showFlag={showFlagModal} openFlag={this.openFlagModal} closeFlag={this.closeFlagModal} />
+        <PhotoModal randomId={randomId} photos={photos} closeModal={this.closePhotoModal} openFlag={this.openFlagModal} closeFlag={this.closeFlagModal} displayPhoto={displayPhoto} displayFlag={displayFlag} />
       </div>
     );
   }

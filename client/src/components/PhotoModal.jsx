@@ -55,17 +55,16 @@ class PhotoModal extends React.Component {
 
   render() {
     const {
-      closeModal, show, showFlag, openFlag, closeFlag,
+      closeModal, openFlag, closeFlag, displayPhoto, displayFlag,
     } = this.props;
     const { currentImageIndex, images } = this.state;
-    const showHide = show ? 'photo-modal block' : 'photo-modal none';
 
     return (
-      <div className={showHide}>
+      <ModalPhotoDiv style={{ display: displayPhoto }}>
         <InnerModal>
           <Wrapper>
             <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
-            <PhotoCarousel openFlag={openFlag} closeFlag={closeFlag} showFlag={showFlag} url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} />
+            <PhotoCarousel openFlag={openFlag} closeFlag={closeFlag} displayFlag={displayFlag} url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} />
             <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
           </Wrapper>
         </InnerModal>
@@ -73,7 +72,7 @@ class PhotoModal extends React.Component {
         <ExitButton>
           <FontAwesomeIcon type="button" onClick={closeModal} icon="times" />
         </ExitButton>
-      </div>
+      </ModalPhotoDiv>
     );
   }
 }
@@ -90,6 +89,15 @@ const InnerModal = styled.section`
 const Wrapper = styled.div`
   display: block;
   margin: 35px;
+`;
+
+const ModalPhotoDiv = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
 `;
 
 const ExitButton = styled.div`

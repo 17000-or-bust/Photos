@@ -37,12 +37,12 @@ describe('App', () => {
     expect(shallow(<App />).state()).toHaveProperty('randomId');
   });
 
-  it('should check for showModal state', () => {
-    expect(shallow(<App />).state()).toHaveProperty('showModal');
+  it('should check for displayPhoto state', () => {
+    expect(shallow(<App />).state()).toHaveProperty('displayPhoto');
   });
 
-  it('should check for showFlagModal state', () => {
-    expect(shallow(<App />).state()).toHaveProperty('showFlagModal');
+  it('should check for displayFlag state', () => {
+    expect(shallow(<App />).state()).toHaveProperty('displayFlag');
   });
 
   it('Mounts to match snapshot', () => {
