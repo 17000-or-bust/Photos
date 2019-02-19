@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import PhotoCarousel from './PhotoCarousel';
 import PhotoCarouselRightArrow from './PhotoCarouselRightArrow';
@@ -98,9 +97,9 @@ class PhotoModal extends React.Component {
           </Wrapper>
         </InnerModal>
 
-        <ExitButton>
-          <FontAwesomeIcon type="button" onClick={closeModal} icon="times" />
-        </ExitButton>
+        <ExitButtonDiv>
+          <ExitButton onClick={closeModal} href="#" />
+        </ExitButtonDiv>
       </ModalPhotoDiv>
     );
   }
@@ -126,19 +125,41 @@ const ModalPhotoDiv = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
 `;
 
-const ExitButton = styled.div`
-  color: #6f737b;
-  font-size: 2em;
+const ExitButtonDiv = styled.div`
   position: absolute;
-  top: 2%;
-  right: 2%;
-  font-family: icons;
-  font-style: normal;
-  font-weight: normal;
+  top: 1%;
+  right: 1%;
   outline: none;
+  cursor: pointer;
+`;
+
+const ExitButton = styled.a`
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 15px;
+  height: 15px;
+  &:before {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 25px;
+    width: 2px;
+    background-color: #6f737b;
+    transform: rotate(45deg);
+  }
+  &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 25px;
+    width: 2px;
+    background-color: #6f737b;
+    transform: rotate(-45deg);
+  }
 `;
 
 export default PhotoModal;
