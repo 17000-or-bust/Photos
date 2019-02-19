@@ -4,7 +4,7 @@ import FlagModal from './FlagModal';
 
 const PhotoCarousel = (props) => {
   const {
-    url, caption, date, username, openFlag, closeFlag, displayFlag, imageIndex
+    url, caption, date, username, openFlag, closeFlag, displayFlag, imageIndex,
   } = props;
   return (
     <div>
