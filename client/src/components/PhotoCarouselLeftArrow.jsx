@@ -2,14 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const PhotoCarouselLeftArrow = props => (
-  <LeftArrowDiv>
-    <FontAwesomeIcon onClick={props.prevImg} icon="angle-left" />
-  </LeftArrowDiv>
-);
+const PhotoCarouselLeftArrow = ({ imageIndex, prevImg }) => {
+  const arrowColor = imageIndex === 0 ? '#333333' : '#91949a';
+
+  return (
+    <LeftArrowDiv>
+      <FontAwesomeIcon onClick={prevImg} icon="angle-left" style={{ color: arrowColor }} />
+    </LeftArrowDiv>
+  );
+};
 
 const LeftArrowDiv = styled.div`
-  color: #91949a;
   &:hover {
     color: #6f737b;
   }
