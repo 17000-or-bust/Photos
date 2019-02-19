@@ -7,8 +7,8 @@ const PhotoBanner = (props) => {
   return (
     <PhotoDiv>
       <PhotoInnerDiv>
-        {photos.map(photo => (
-          <Photo photo={photo} key={photo.id} openModal={openModal} closeModal={closeModal} />
+        {photos.map((photo, i) => (
+          <Photo photo={photo} key={photo.id} index={i} openModal={openModal} closeModal={closeModal} />
         ))}
       </PhotoInnerDiv>
     </PhotoDiv>

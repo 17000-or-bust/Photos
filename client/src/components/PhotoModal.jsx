@@ -12,7 +12,7 @@ class PhotoModal extends React.Component {
     super(props);
     this.state = {
       images: [{}],
-      currentImageIndex: 0,
+      currentImageIndex: this.props.clickedImageIndex,
       randomId: this.props.randomId,
       currentKey: '',
     };
@@ -28,6 +28,12 @@ class PhotoModal extends React.Component {
 
   componentWillUnmount() {
     document.removeEventListener('keyup', this.handleKeyPress);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentImageIndex: nextProps.clickedImageIndex
+    })
   }
 
   getImagesForBanner(id) {
@@ -86,7 +92,7 @@ class PhotoModal extends React.Component {
         <InnerModal>
           <Wrapper>
             <PhotoCarouselLeftArrow prevImg={this.handlePreviousImageClick} />
-            <PhotoCarousel openFlag={openFlag} closeFlag={closeFlag} displayFlag={displayFlag} url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} />
+            <PhotoCarousel openFlag={openFlag} closeFlag={closeFlag} displayFlag={displayFlag} url={images[currentImageIndex].image_url} caption={images[currentImageIndex].caption} username={images[currentImageIndex].username} date={moment(images[currentImageIndex].date_posted).format('LL')} imageIndex={currentImageIndex} />
             <PhotoCarouselRightArrow nextImg={this.handleNextImageClick} />
           </Wrapper>
         </InnerModal>

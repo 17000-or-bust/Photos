@@ -22,6 +22,7 @@ class App extends React.Component {
       randomId: Math.floor(Math.random() * 100) + 1,
       displayPhoto: 'none',
       displayFlag: 'none',
+      clickedImageIndex: 0,
     };
     this.openPhotoModal = this.openPhotoModal.bind(this);
     this.closePhotoModal = this.closePhotoModal.bind(this);
@@ -45,9 +46,10 @@ class App extends React.Component {
     });
   }
 
-  openPhotoModal() {
+  openPhotoModal(event) {
     this.setState({
       displayPhoto: 'block',
+      clickedImageIndex: parseInt(event.target.dataset.indexNumber),
     });
   }
 
@@ -57,9 +59,10 @@ class App extends React.Component {
     });
   }
 
-  openFlagModal() {
+  openFlagModal(index) {
     this.setState({
       displayFlag: 'block',
+      clickedImageIndex: index,
     });
   }
 
@@ -71,7 +74,7 @@ class App extends React.Component {
 
   render() {
     const {
-      photos, randomId, displayPhoto, displayFlag,
+      photos, randomId, displayPhoto, displayFlag, clickedImageIndex,
     } = this.state;
 
     return (
@@ -96,7 +99,7 @@ class App extends React.Component {
             <PhotoDisplay photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} />
           </Display>
         </PhotoContainer>
-        <PhotoModal randomId={randomId} photos={photos} closeModal={this.closePhotoModal} openFlag={this.openFlagModal} closeFlag={this.closeFlagModal} displayPhoto={displayPhoto} displayFlag={displayFlag} />
+        <PhotoModal randomId={randomId} photos={photos} closeModal={this.closePhotoModal} openFlag={this.openFlagModal} closeFlag={this.closeFlagModal} displayPhoto={displayPhoto} displayFlag={displayFlag} clickedImageIndex={clickedImageIndex} />
       </div>
     );
   }

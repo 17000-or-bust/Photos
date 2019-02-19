@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Photo = props => (
   <ImgSpan>
-    <Img onClick={event => props.openModal(event)} src={props.photo.image_url} alt="" />
+    <Img data-index-number={props.index} onClick={event => props.openModal(event)} src={props.photo.image_url} alt="" />
   </ImgSpan>
 );
 
@@ -13,7 +13,6 @@ const Img = styled.img`
   width: 18em;
   display: inline-block;
   border: 3px solid #2d333f;
-  transition: all .2s ease-out;
 `;
 
 const ImgSpan = styled.span`
