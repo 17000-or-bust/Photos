@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FlagModal = (props) => {
-  const { showFlag, closeFlag } = props;
-  const showHideFlag = showFlag ? 'flag-modal block' : 'flag-modal none';
+  const { closeFlag, displayFlag } = props;
 
   return (
-    <div className={showHideFlag}>
+    <FlagDiv style={{ display: displayFlag }}>
       <FlagInnerModal>
         <div>
           <FlagHeader>Report a photo problem</FlagHeader>
@@ -24,7 +23,7 @@ const FlagModal = (props) => {
           <CancelButton type="button" onClick={closeFlag}>Cancel</CancelButton>
         </div>
       </FlagInnerModal>
-    </div>
+    </FlagDiv>
   );
 };
 
@@ -58,6 +57,7 @@ const OptionsButton = styled.button`
   padding: .6rem 1.75rem;
   text-align: center;
   border-radius: 3px;
+  outline: none;
 `;
 
 const CancelButton = styled.button`
@@ -73,7 +73,17 @@ const CancelButton = styled.button`
     border-color: #2b9abf;
     color: #2b9abf;
     border-width: .05rem;
+    outline: none;
 `;
 
+const FlagDiv = styled.div`
+  position: fixed;
+  top: 30%;
+  left: 27%;
+  width: 50%;
+  height: auto;
+  background: rgb(255, 255, 255);
+  border-radius: 1%;
+`;
 
 export default FlagModal;

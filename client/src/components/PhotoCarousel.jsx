@@ -4,7 +4,7 @@ import FlagModal from './FlagModal';
 
 const PhotoCarousel = (props) => {
   const {
-    url, caption, date, username, openFlag, showFlag, closeFlag,
+    url, caption, date, username, openFlag, closeFlag, displayFlag,
   } = props;
   return (
     <div>
@@ -32,7 +32,7 @@ const PhotoCarousel = (props) => {
             <path id="_24._Tiny_Flag_Icon" fill="#fff" d="M485,475H469v12h-2V463h18l-3,6Zm-16-10v8h13l-2-4,2-4H469Z" transform="translate(-464 -463)" />
           </svg>
         </FlagSpan>
-        <FlagModal showFlag={showFlag} closeFlag={closeFlag} />
+        <FlagModal closeFlag={closeFlag} displayFlag={displayFlag} />
       </div>
     </div>
   );
