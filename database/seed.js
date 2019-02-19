@@ -53,7 +53,7 @@ Photos.sync({
       for (let i = 1; i <= 100; i += 1) {
         const randomMax = Math.floor(Math.random() * 80) + 20;
         for (let j = 0; j <= randomMax; j += 1) {
-          const randomPic = Math.floor(Math.random() * 100);
+          const randomPic = Math.floor(Math.random() * 100) + 1;
           const photoRow = Photos.build({
             restaurant_id: i,
             image_url: `https://s3-us-west-1.amazonaws.com/waitonme/photos/food${randomPic}.jpg`,
