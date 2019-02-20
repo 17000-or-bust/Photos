@@ -35,6 +35,13 @@ To access the module, please go to:
 ###### Test
 `npm run test-watch` to run tests
 
+###### Static File
+
+Please include the following link in your index.html:
+
+```
+<link href="https://fonts.googleapis.com/css?family=Istok+Web:400,400i,700,700i" rel="stylesheet">
+```
 
 ## Requirements
 
