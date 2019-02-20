@@ -1,14 +1,21 @@
 const express = require('express');
 const path = require('path');
-const { findPhotos } = require('../database/index');
+const cors = require('cors');
+const {
+  findPhotos,
+} = require('../database/index');
+
 const app = express();
 
-let PORT = 8888;
+const PORT = 8888;
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/api/photos/:id', (req, res) => {
-  let { id } = req.params;
+  const {
+    id,
+  } = req.params;
   findPhotos(id)
     .then((photos) => {
       res.status(200).send(photos);
@@ -19,4 +26,3 @@ app.get('/api/photos/:id', (req, res) => {
 });
 
 app.listen(PORT, console.log(`Listening to PORT ${PORT}...`));
-
