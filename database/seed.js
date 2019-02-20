@@ -51,7 +51,7 @@ Photos.sync({
       const photoTable = [];
       // i = restaurant ids
       for (let i = 1; i <= 100; i += 1) {
-        const randomMax = Math.floor(Math.random() * 80) + 20;
+        const randomMax = Math.floor(Math.random() * 30) + 20;
         for (let j = 0; j <= randomMax; j += 1) {
           const randomPic = Math.floor(Math.random() * 100) + 1;
           const photoRow = Photos.build({
