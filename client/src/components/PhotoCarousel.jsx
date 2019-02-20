@@ -1,6 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import FlagModal from './FlagModal';
+
+const { styled } = window;
 
 const PhotoCarousel = (props) => {
   const {

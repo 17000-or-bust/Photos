@@ -20,4 +20,7 @@ module.exports = {
   devServer: {
     contentBase: './client/dist',
   },
+  externals: {
+    'styled-components': true,
+  },
 };
