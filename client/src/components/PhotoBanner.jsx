@@ -1,6 +1,9 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+// import styled from 'styled-components';
 import Photo from './Photo';
+
+const { styled } = window;
+// const keyframes = styled
 
 const PhotoBanner = (props) => {
   const { photos, openModal, closeModal } = props;
@@ -15,7 +18,7 @@ const PhotoBanner = (props) => {
   );
 };
 
-const scroll = keyframes`
+const scroll = styled.keyframes`
   {
     0%{
       transform: translate3d(0, 0, 0);

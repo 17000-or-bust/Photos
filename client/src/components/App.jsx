@@ -1,10 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import SaveThisRestaurantButton from './SaveThisRestaurantButton';
 import PhotoBanner from './PhotoBanner';
 import PhotoModal from './PhotoModal';
 import PhotoDisplay from './PhotoDisplay';
 import ajax from '../lib/ajax';
+
+const { styled } = window;
 
 class App extends React.Component {
   constructor(props) {

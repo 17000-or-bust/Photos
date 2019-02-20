@@ -1,10 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import moment from 'moment';
 import PhotoCarousel from './PhotoCarousel';
 import PhotoCarouselRightArrow from './PhotoCarouselRightArrow';
 import PhotoCarouselLeftArrow from './PhotoCarouselLeftArrow';
 import ajax from '../lib/ajax';
+
+const { styled } = window;
 
 class PhotoModal extends React.Component {
   constructor(props) {

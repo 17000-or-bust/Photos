@@ -1,6 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import PhotoDisplayEntry from './PhotoDisplayEntry';
+
+const { styled } = window;
+
 
 const PhotoDisplay = (props) => {
   const { photos, openModal, closeModal } = props;

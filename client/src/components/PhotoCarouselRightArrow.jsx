@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+const { styled } = window;
 
 const PhotoCarouselRightArrow = ({ imageIndex, images, nextImg }) => {
   const arrowColor = imageIndex === images.length - 1 ? '#333333' : '#91949a';
