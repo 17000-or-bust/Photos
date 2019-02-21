@@ -24,7 +24,32 @@ To access the module, please go to:
 > http://localhost:8888/
 
 ###### Database
-`npm run seed` to insert data into database
+1) On line 8 of `seed.js`, please remove 'restaurants'. It should look like:
+
+```
+const sequelize = new Sequelize('', username, password, {
+  host: 'localhost',
+  dialect: 'mysql',
+});
+```
+
+2) Un-comment line 14 to create database
+```
+sequelize.query("CREATE DATABASE restaurants;");
+```
+
+3) Once the database is created, comment out line 14 again.
+
+4) Put 'restaurants' back line 8 so it looks like:
+
+```
+const sequelize = new Sequelize('restaurants', username, password, {
+  host: 'localhost',
+  dialect: 'mysql',
+});
+```
+
+4) `npm run seed` to insert data into database
 
 ###### Client
 `npm run react-dev` to run webpack and watch
