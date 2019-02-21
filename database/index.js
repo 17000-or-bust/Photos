@@ -1,9 +1,13 @@
 const Sequelize = require('sequelize');
-const { username, password } = require('./config');
+const {
+  username,
+  password,
+} = require('./config');
 
 const sequelize = new Sequelize('restaurants', username, password, {
-  host: 'localhost',
-  dialect: 'mysql'
+  host: '172.17.0.3',
+  port: '3306',
+  dialect: 'mysql',
 });
 
 const Photos = sequelize.define('photos', {
@@ -11,7 +15,7 @@ const Photos = sequelize.define('photos', {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
   },
   restaurant_id: {
     type: Sequelize.INTEGER,
@@ -24,25 +28,23 @@ const Photos = sequelize.define('photos', {
     type: Sequelize.STRING,
   },
   date_posted: {
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
   },
   username: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   hover_data: {
-    type: Sequelize.STRING
-  }
+    type: Sequelize.STRING,
+  },
 });
 
 
-const findPhotos = (id) => {
-  return Photos.findAll({
-    where: {
-      restaurant_id: id
-    }
-  });
-};
+const findPhotos = id => Photos.findAll({
+  where: {
+    restaurant_id: id,
+  },
+});
 
 module.exports = {
-  findPhotos
+  findPhotos,
 };
