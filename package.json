@@ -15,7 +15,7 @@
     "seed": "node database/seed.js",
     "test": "jest",
     "test-watch": "jest --watch --coverage --colors --verbose",
-    "node-server": "node server/index.js"
+    "node-server": "node database/seed.js; node server/index.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.14",
