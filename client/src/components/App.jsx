@@ -11,9 +11,17 @@ const { styled } = window;
 class App extends React.Component {
   constructor(props) {
     super(props);
+    let id = 1;
+
+    const pathName = window.location.pathname.split('/');
+    const restaurantId = parseInt(pathName[1], 10);
+    if (!Number.isNaN(restaurantId)) {
+      id = restaurantId;
+    }
+
     this.state = {
       photos: [{}, {}, {}, {}, {}, {}, {}, {}, {}],
-      randomId: Math.floor(Math.random() * 100) + 1,
+      randomId: id,
       displayPhoto: 'none',
       displayFlag: 'none',
       clickedImageIndex: 0,
@@ -43,7 +51,7 @@ class App extends React.Component {
   openPhotoModal(event) {
     this.setState({
       displayPhoto: 'block',
-      clickedImageIndex: parseInt(event.target.dataset.indexNumber),
+      clickedImageIndex: parseInt(event.target.dataset.indexNumber, 10),
     });
   }
 
@@ -75,7 +83,11 @@ class App extends React.Component {
       <div>
         <MainBannerDiv>
 
-          <PhotoBanner photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} />
+          <PhotoBanner
+            photos={photos}
+            openModal={this.openPhotoModal}
+            closeModal={this.closePhotoModal}
+          />
 
           <SaveThisRestaurantButton />
 
@@ -89,10 +101,23 @@ class App extends React.Component {
             Photos
           </NumberOfPhotos>
           <Display>
-            <PhotoDisplay photos={photos} openModal={this.openPhotoModal} closeModal={this.closePhotoModal} />
+            <PhotoDisplay
+              photos={photos}
+              openModal={this.openPhotoModal}
+              closeModal={this.closePhotoModal}
+            />
           </Display>
         </PhotoContainer>
-        <PhotoModal randomId={randomId} photos={photos} closeModal={this.closePhotoModal} openFlag={this.openFlagModal} closeFlag={this.closeFlagModal} displayPhoto={displayPhoto} displayFlag={displayFlag} clickedImageIndex={clickedImageIndex} />
+        <PhotoModal
+          randomId={randomId}
+          photos={photos}
+          closeModal={this.closePhotoModal}
+          openFlag={this.openFlagModal}
+          closeFlag={this.closeFlagModal}
+          displayPhoto={displayPhoto}
+          displayFlag={displayFlag}
+          clickedImageIndex={clickedImageIndex}
+        />
       </div>
     );
   }
