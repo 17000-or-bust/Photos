@@ -129,7 +129,7 @@ const OverviewPlaceholder = styled.div`
   height: 400px;
   margin: 0 200px;
   width: 620px;
-  background: url(https://via.placeholder.com/620x400?text=Restaurant+Overview+Placeholder);
+  background-color: white;
 `;
 
 const MainBannerDiv = styled.div`
