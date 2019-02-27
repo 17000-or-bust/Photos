@@ -25,6 +25,36 @@ app.get('/api/photos/:id', (req, res) => {
     });
 });
 
+app.post('/api/photos', (req, res) => {
+
+});
+
+app.put('/api/photos/:id', (req, res) => {
+  const {
+    id,
+  } = req.params;
+  // findPhotos(id)
+  //   .then((photos) => {
+  //     res.status(200).send(photos);
+  //   })
+  //   .catch((err) => {
+  //     res.status(400).send(err);
+  //   });
+});
+
+app.delete('/api/photos/:id', (req, res) => {
+  const {
+    id,
+  } = req.params;
+  // findPhotos(id)
+  //   .then((photos) => {
+  //     res.status(200).send(photos);
+  //   })
+  //   .catch((err) => {
+  //     res.status(400).send(err);
+  //   });
+});
+
 // Shows the page on load even if the above doesn't exist
 app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
 
