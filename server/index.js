@@ -16,13 +16,52 @@ app.get('/api/photos/:id', (req, res) => {
   const {
     id,
   } = req.params;
-  findPhotos(id)
-    .then((photos) => {
-      res.status(200).send(photos);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
+  // findPhotos(id)
+  //   .then((photos) => {
+  //     res.status(200).send(photos);
+  //   })
+  //   .catch((err) => {
+  //     res.status(400).send(err);
+  //   });
+});
+
+app.post('/api/photos/:id', (req, res) => {
+  const {
+    id,
+  } = req.params;
+  // findPhotos(id)
+  //   .then((photos) => {
+  //     res.status(200).send(photos);
+  //   })
+  //   .catch((err) => {
+  //     res.status(400).send(err);
+  //   });
+});
+
+app.put('/api/photos/:id', (req, res) => {
+  const {
+    id,
+  } = req.params;
+  // findPhotos(id)
+  //   .then((photos) => {
+  //     res.status(200).send(photos);
+  //   })
+  //   .catch((err) => {
+  //     res.status(400).send(err);
+  //   });
+});
+
+app.delete('/api/photos/:id', (req, res) => {
+  const {
+    id,
+  } = req.params;
+  // findPhotos(id)
+  //   .then((photos) => {
+  //     res.status(200).send(photos);
+  //   })
+  //   .catch((err) => {
+  //     res.status(400).send(err);
+  //   });
 });
 
 // Shows the page on load even if the above doesn't exist
