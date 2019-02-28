@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const {
-  findPhotos,
-} = require('../database/index');
+const db = require('../database/index');
 
 const app = express();
 
@@ -16,7 +14,7 @@ app.get('/api/photos/:id', (req, res) => {
   const {
     id,
   } = req.params;
-  findPhotos(id)
+  db.findPhotos(id)
     .then((photos) => {
       res.status(200).send(photos);
     })
@@ -26,33 +24,48 @@ app.get('/api/photos/:id', (req, res) => {
 });
 
 app.post('/api/photos', (req, res) => {
+  const restaurant = req.body.restaurant_id;
+  const image = req.body.image_url;
+  const caption = req.body.caption;
+  const date = req.body.date_posted;
+  const user = req.body.username;
+  const hover_data = req.body.hover_data;
+  const create = req.body.createdAt;
+  const update = req.body.updatedAt;
 
+  db.insertPhoto(restaurant, image, caption, date, user, hover_data, create, update)
+    .then(() => {
+      res.status(201).send(req.body);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    })
 });
 
 app.put('/api/photos/:id', (req, res) => {
   const {
     id,
   } = req.params;
-  // findPhotos(id)
-  //   .then((photos) => {
-  //     res.status(200).send(photos);
-  //   })
-  //   .catch((err) => {
-  //     res.status(400).send(err);
-  //   });
+  db.updatePhoto(id)
+    .then((photos) => {
+      res.status(200).send(photos);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
 });
 
 app.delete('/api/photos/:id', (req, res) => {
   const {
     id,
   } = req.params;
-  // findPhotos(id)
-  //   .then((photos) => {
-  //     res.status(200).send(photos);
-  //   })
-  //   .catch((err) => {
-  //     res.status(400).send(err);
-  //   });
+  db.deletePhoto(id)
+    .then((photos) => {
+      res.status(200).send(photos);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
 });
 
 // Shows the page on load even if the above doesn't exist
