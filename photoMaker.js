@@ -19,3 +19,7 @@ function populateFolder() {
   });
 }
 populateFolder();
+<<<<<<< HEAD
+=======
+//make a file named pics in your folder for this function.  Makes 100 random lorem photos.  You're welcome Cow.
+>>>>>>> 7450e86b2ee624af55ae7f1e9ad2a4bae75df007
