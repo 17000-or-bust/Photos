@@ -3,16 +3,16 @@ const faker = require('faker');
 const DataGenerator = require('./DataGenerator.js');
 
 const CHUNK_SIZE = 1000;
-const MAX_ROWS = 10 * 1000 * 1000;
+const MAX_ROWS = 140 * 1000 * 1000;
 
 if (MAX_ROWS < CHUNK_SIZE || MAX_ROWS % CHUNK_SIZE !== 0) {
   throw new Error('Invalid CHUNK_SIZE or MAX_ROWS');
 }
 
-const getRandomNumber = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+const getRandomNumber = (minimum, maximum) => {
+  minimum = Math.ceil(minimum);
+  maximum = Math.floor(maximum);
+  return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
 };
 
 const getRandomDate = (maxMonths) => {
