@@ -34,7 +34,7 @@ Returns a `{ Photo }` at a given photo id.
   * **Content:** `{ error : "Bad Request error" }`
 
  ### `POST /api/photos`
-Returns the `id` of the reservation created in the database.
+Returns the `id` of the photo created in the database.
 
  **Payload Params**
   * Valid `{ JSON }` object conforming to the following format:
@@ -57,10 +57,10 @@ Returns the `id` of the reservation created in the database.
   * **Content:** `{ error : "Bad Request error" }`
 
  ### `PUT /api/photos/:id`
-Returns the `id` of the reservation edited in the database.
+Returns the `id` of the photo edited in the database.
 
  **URL Params**
-  * `id` _(Number)_ : ID of the reservation to update
+  * `id` _(Number)_ : ID of the photo to update
 
  **Payload Params**
   * Valid `{ JSON }` object conforming to the following format:

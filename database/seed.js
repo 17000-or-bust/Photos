@@ -64,8 +64,7 @@ createdb.query('CREATE DATABASE IF NOT EXISTS restaurants;')
               const randomPic = Math.floor(Math.random() * 50) + 1;
               const photoRow = Photos.build({
                 restaurant_id: i,
-                // image_url: `https://s3-us-west-1.amazonaws.com/waitonme/photos/food${randomPic}.jpg`,
-                image_url: `https://s3.amazonaws.com/cowiesdcphotos/user${i}.jpg`
+                image_url: `https://s3.amazonaws.com/cowiesdcphotos/user${i}.jpg`,
                 caption: faker.random.words(),
                 date_posted: faker.date.past(),
                 username: faker.name.findName(),
@@ -80,3 +79,4 @@ createdb.query('CREATE DATABASE IF NOT EXISTS restaurants;')
       .then(() => sequelize.close())
       .catch(err => console.log(err));
   });
+  

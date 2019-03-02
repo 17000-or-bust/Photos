@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+webpack = require('webpack');
 
 module.exports = {
   entry: './client/src/index.jsx',
