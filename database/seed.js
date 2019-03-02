@@ -79,4 +79,6 @@ createdb.query('CREATE DATABASE IF NOT EXISTS restaurants;')
       .then(() => sequelize.close())
       .catch(err => console.log(err));
   });
-  
+
+
+//explain analyze insert into photos (id, restaurant_id, image_url, caption, username, hover_data, date_posted) values (10000000, 100000, 'randomurl', 'random caption here', 'cowiethestar', 'random hover data here', '2019-02-02');
