@@ -1,1 +1,1 @@
-\copy photos FROM '/Users/ryancowie/Desktop/photos/database/photos.csv' DELIMITERS ',' CSV;
+\copy photos FROM '/Volumes/COWIE/photos/database/photos.csv' DELIMITERS ',' CSV;
