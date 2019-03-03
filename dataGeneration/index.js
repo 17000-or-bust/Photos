@@ -15,11 +15,11 @@ const getRandomNumber = (minimum, maximum) => {
   return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
 };
 
-const getRandomDate = (maxMonths) => {
+const getRandomDate = (months) => {
   const date = new Date().getTime();
-  const futureDate = new Date();
-  const dateFromNow = futureDate.setMonth(futureDate.getMonth() + maxMonths);
-  return moment(getRandomNumber(date, dateFromNow)).format('YYYY-MM-DD');
+  const future = new Date();
+  const dateDifference = future.setMonth(future.getMonth() + months);
+  return moment(getRandomNumber(date, dateDifference)).format('YYYY-MM-DD');
 };
 
 const generatePhotos = () => {
