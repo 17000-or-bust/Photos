@@ -12,6 +12,8 @@ mongo restaurant --eval "printjson(db.dropDatabase())"
 
 mongoimport -d restaurant -c photos --type csv --file /Volumes/COWIE/photos/database/photos.csv --fields id,restaurant_id,image_url,caption,username,hover_data,date_posted
 
+mongo restaurant --eval "db.photos.createIndex({ id: 1 })"
+mongo restaurant --eval "db.photos.createIndex({ restaurant_id: 1 })"
 
 endTime=$(date +'%T')
 echo "Finished at: $endTime"
