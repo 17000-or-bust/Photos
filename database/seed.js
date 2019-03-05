@@ -81,4 +81,4 @@ createdb.query('CREATE DATABASE IF NOT EXISTS restaurants;')
   });
 
 
-//explain analyze insert into photos (id, restaurant_id, image_url, caption, username, hover_data, date_posted) values (10000000, 100000, 'randomurl', 'random caption here', 'cowiethestar', 'random hover data here', '2019-02-02');
+//explain analyze insert into photos (id, restaurant_id, image_url, caption, username, hover_data, date_posted) values (140000001, 100000, 'randomurl', 'random caption here', 'cowiethestar', 'random hover data here', '2019-02-02');
