@@ -34,6 +34,17 @@ app.post('/api/photos', (req, res) => {
   });
 });
 
+app.put('/api/photos/:id', (req, res) => {
+  const { id } = req.params;
+  db.updatePhoto(req.body, id, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(req.body);
+    }
+  });
+});
+
 // app.post('/api/photos', (req, res) => {
 //   const restaurant = req.body.restaurant_id;
 //   const image = req.body.image_url;
