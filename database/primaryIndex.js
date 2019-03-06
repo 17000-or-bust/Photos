@@ -43,6 +43,17 @@ const updatePhoto = (info, id, callback) => {
   });
 };
 
+const deletePhoto = (id, callback) => {
+  const queryStr = `DELETE FROM photos WHERE id = ${id}`;
+  pool.query(queryStr, (err) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null);
+  });
+};
+
 module.exports = {
-  getPhotos, postPhoto, updatePhoto,
+  getPhotos, postPhoto, updatePhoto, deletePhoto,
 };
