@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const db = require('../database/primaryIndex');
 
 const app = express();
@@ -8,6 +9,7 @@ const app = express();
 const PORT = 8888;
 
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/api/photos/:id', (req, res) => {
@@ -17,6 +19,17 @@ app.get('/api/photos/:id', (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(200).send(photo);
+    }
+  });
+});
+
+app.post('/api/photos', (req, res) => {
+  console.log(req.body)
+  db.postPhoto(req.body, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(req.body);
     }
   });
 });
