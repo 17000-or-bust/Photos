@@ -30,9 +30,9 @@ const postPhoto = (info, callback) => {
   });
 };
 
-const updatePhoto = (info, id, callback) => {
+const updatePhoto = (info, photoId, callback) => {
   const queryStr = `UPDATE photos SET restaurant_id = $1, image_url = $2,
-  caption = $3, username = $4, hover_data = $5, date_posted = $6 WHERE id = ${id}`;
+  caption = $3, username = $4, hover_data = $5, date_posted = $6 WHERE id = ${photoId}`;
   const params = [info.restaurant_id, info.image_url, info.caption, info.username, info.hover_data, info.date_posted];
   pool.query(queryStr, params, (err) => {
     if (err) {
@@ -43,8 +43,8 @@ const updatePhoto = (info, id, callback) => {
   });
 };
 
-const deletePhoto = (id, callback) => {
-  const queryStr = `DELETE FROM photos WHERE id = ${id}`;
+const deletePhoto = (photoId, callback) => {
+  const queryStr = `DELETE FROM photos WHERE id = ${photoId}`;
   pool.query(queryStr, (err) => {
     if (err) {
       callback(err);

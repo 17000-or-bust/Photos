@@ -24,7 +24,6 @@ app.get('/api/photos/:id', (req, res) => {
 });
 
 app.post('/api/photos', (req, res) => {
-  console.log(req.body)
   db.postPhoto(req.body, (err) => {
     if (err) {
       res.status(500).send(err);
@@ -34,9 +33,9 @@ app.post('/api/photos', (req, res) => {
   });
 });
 
-app.put('/api/photos/:id', (req, res) => {
-  const { id } = req.params;
-  db.updatePhoto(req.body, id, (err) => {
+app.put('/api/photos/:photoId', (req, res) => {
+  const { photoId } = req.params;
+  db.updatePhoto(req.body, photoId, (err) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -45,13 +44,13 @@ app.put('/api/photos/:id', (req, res) => {
   });
 });
 
-app.delete('/api/photos/:id', (req, res) => {
-  const { id } = req.params;
-  db.deletePhoto(id, (err) => {
+app.delete('/api/photos/:photoId', (req, res) => {
+  const { photoId } = req.params;
+  db.deletePhoto(photoId, (err) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.status(200).send(`Photo at ${id} successfully deleted`);
+      res.status(200).send(`Photo at ${photoId} successfully deleted`);
     }
   });
 });
