@@ -10,7 +10,8 @@ const app = express();
 const PORT = 8888;
 
 app.use(cors());
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+const jsonParser = bodyParser.json();
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/api/photos/:id', (req, res) => {
@@ -24,7 +25,7 @@ app.get('/api/photos/:id', (req, res) => {
   });
 });
 
-app.post('/api/photos', (req, res) => {
+app.post('/api/photos', jsonParser, (req, res) => {
   db.postPhoto(req.body, (err) => {
     if (err) {
       res.status(500).send(err);

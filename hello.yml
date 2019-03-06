@@ -1,13 +1,17 @@
 config:
   target: 'http://localhost:8888'
+  processor: "./artillery.js"
+  http:
+    pool: 10
   phases:
     - duration: 60
-      arrivalRate: 100
+      arrivalRate: 1000
   defaults:
     headers:
       x-my-service-auth: '987401838271002188298567'
 scenarios:
   - flow:
+    - function: "loadData"
     - get:
-        url: "/9999999/"
+        url: "/api/photos/{{ randomInt }}"
 
