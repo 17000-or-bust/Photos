@@ -35,7 +35,7 @@ app.post('/api/photos', jsonParser, (req, res) => {
   });
 });
 
-app.put('/api/photos/:photoId', (req, res) => {
+app.put('/api/photos/:photoId', jsonParser, (req, res) => {
   const { photoId } = req.params;
   db.updatePhoto(req.body, photoId, (err) => {
     if (err) {
