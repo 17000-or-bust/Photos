@@ -1,71 +1,60 @@
+const newrelic = require('newrelic');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const db = require('../database/index');
+const bodyParser = require('body-parser');
+const db = require('../database/primaryIndex');
 
 const app = express();
 
 const PORT = 8888;
 
 app.use(cors());
+// app.use(bodyParser.json());
+const jsonParser = bodyParser.json();
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/api/photos/:id', (req, res) => {
-  const {
-    id,
-  } = req.params;
-  db.findPhotos(id)
-    .then((photos) => {
-      res.status(200).send(photos);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
+  const { id } = req.params;
+  db.getPhotos(id, (err, photo) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(photo);
+    }
+  });
 });
 
-app.post('/api/photos', (req, res) => {
-  const restaurant = req.body.restaurant_id;
-  const image = req.body.image_url;
-  const caption = req.body.caption;
-  const date = req.body.date_posted;
-  const user = req.body.username;
-  const hover_data = req.body.hover_data;
-  const create = req.body.createdAt;
-  const update = req.body.updatedAt;
-
-  db.insertPhoto(restaurant, image, caption, date, user, hover_data, create, update)
-    .then(() => {
+app.post('/api/photos', jsonParser, (req, res) => {
+  db.postPhoto(req.body, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
       res.status(201).send(req.body);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    })
+    }
+  });
 });
 
-app.put('/api/photos/:id', (req, res) => {
-  const {
-    id,
-  } = req.params;
-  db.updatePhoto(id)
-    .then((photos) => {
-      res.status(200).send(photos);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
+app.put('/api/photos/:photoId', jsonParser, (req, res) => {
+  const { photoId } = req.params;
+  db.updatePhoto(req.body, photoId, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(req.body);
+    }
+  });
 });
 
-app.delete('/api/photos/:id', (req, res) => {
-  const {
-    id,
-  } = req.params;
-  db.deletePhoto(id)
-    .then((photos) => {
-      res.status(200).send(photos);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
+app.delete('/api/photos/:photoId', (req, res) => {
+  const { photoId } = req.params;
+  db.deletePhoto(photoId, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(`Photo at ${photoId} successfully deleted`);
+    }
+  });
 });
 
 // Shows the page on load even if the above doesn't exist

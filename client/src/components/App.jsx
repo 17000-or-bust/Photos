@@ -38,12 +38,13 @@ class App extends React.Component {
 
   getPhotosForBanner(id) {
     ajax.getPhotos(id, (err, data) => {
+      console.log(data.rows)
       if (err) {
         console.log(err);
         return;
       }
       this.setState({
-        photos: data,
+        photos: data.rows,
       });
     });
   }

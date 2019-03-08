@@ -4,13 +4,13 @@
 * [**Photos.photos**](#photosphotos)
     * [GET /api/photos/:id](#get-apiphotosid)
     * [POST /api/photos](#post-apiphotos)
-    * [PUT /api/photos/:id](#put-apiphotosid)
-    * [DELETE /api/photos/:id](#delete-apiphotosid)
+    * [PUT /api/photos/:photoId](#put-apiphotosid)
+    * [DELETE /api/photos/:photoId](#delete-apiphotosid)
 <hr>
 
  ## Photos.photos
 ### `GET /api/photos/:id`
-Returns a `{ Photo }` at a given photo id.
+Returns all `{ Photos }` at a given restaurant id.
 
  **URL Params**
   * `id` _(Number)_ : ID of the photo to retrieve all relevant details
@@ -56,7 +56,7 @@ Returns the `id` of the photo created in the database.
   * **Code:** 400 Bad Request error
   * **Content:** `{ error : "Bad Request error" }`
 
- ### `PUT /api/photos/:id`
+ ### `PUT /api/photos/:photoId`
 Returns the `id` of the photo edited in the database.
 
  **URL Params**
@@ -83,7 +83,7 @@ Returns the `id` of the photo edited in the database.
   * **Code:** 400 Bad Request error
   * **Content:** `{ error : "Bad Request error" }`
 
- ### `DELETE /api/photos/:id`
+ ### `DELETE /api/photos/:photoId`
 Returns the `{ Photo }` deleted from the database.
 
  **URL Params**
