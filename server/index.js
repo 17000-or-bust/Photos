@@ -1,11 +1,13 @@
-const newrelic = require('newrelic');
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+var compression = require('compression')
 const db = require('../database/primaryIndex');
 
 const app = express();
+app.use(compression())
 
 const PORT = 8888;
 

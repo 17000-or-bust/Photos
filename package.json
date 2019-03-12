@@ -17,7 +17,8 @@
     "test": "jest",
     "test-watch": "jest --watch --coverage --colors --verbose",
     "node-server": "node database/seed.js; node server/index.js",
-    "generate-data": "node dataGeneration/index.js"
+    "generate-data": "node dataGeneration/index.js",
+    "production": "webpack --mode production"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.14",
