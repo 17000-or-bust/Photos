@@ -41,7 +41,6 @@ class PhotoModal extends React.Component {
   getImagesForBanner(id) {
     ajax.getPhotos(id, (err, data) => {
       if (err) {
-        console.log(err);
         return;
       }
       this.setState({
