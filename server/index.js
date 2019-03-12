@@ -7,7 +7,7 @@ var compression = require('compression')
 const db = require('../database/primaryIndex');
 
 const app = express();
-app.use(compression())
+app.use(compression());
 
 const PORT = 8888;
 
