@@ -91,3 +91,4 @@ app.delete('/api/photos/:photoId', (req, res) => {
 app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
 
 app.listen(PORT, console.log(`Listening to PORT ${PORT}...`));
+
