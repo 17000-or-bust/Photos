@@ -20,7 +20,6 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 const client = redis.createClient();
 
 client.on('connect', () => {
-	client.flushdb((err, success) => console.log('Redis client flushed'))
   console.log('Redis client connected');
 });
 
@@ -28,27 +27,18 @@ client.on('error', (err) => {
 	console.log('Redis went wrong:', err);
 });
 
-
 app.get('/api/photos/:id', (req, res) => {
   const { id } = req.params;
-  client.exists(`${id}`, (err, reply) => {
-    if (reply === 1) {
-      client.get(`${id}`, (err, reply) => {
-        if (err) {
-          console.log(err);
-          throw err;
-        } else {
-          res.status(210).send(JSON.parse(reply));
-        }
-      })
-    } else {
+    client.get(`${id}`, (err, reply) => {
+      if (reply) {
+        res.status(200).send(reply);
+      } else {
       db.getPhotos(id, (err, photo) => {
         if (err) {
           res.status(500).send(err);
-          return;
         } else {
-          client.set(`${id}`, JSON.stringify(photo.rows));
           res.status(200).send(photo.rows);
+          client.set(`${id}`, JSON.stringify(photo.rows));
         }
       });
     }
