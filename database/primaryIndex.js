@@ -5,8 +5,6 @@ const pool = new Pool(config);
 
 pool.connect();
 
-pool.connect();
-
 const getPhotos = (id, callback) => {
   const queryStr = `SELECT * FROM photos WHERE restaurant_id = ${id}`;
   pool.query(queryStr, (err, photo) => {
