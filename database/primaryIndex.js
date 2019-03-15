@@ -3,7 +3,7 @@ const config = require('./config');
 
 const pool = new Pool(config);
 
-pool.connect(() => console.log('connected'));
+pool.connect();
 
 const getPhotos = (id, callback) => {
   const queryStr = `SELECT * FROM photos WHERE restaurant_id = ${id}`;
