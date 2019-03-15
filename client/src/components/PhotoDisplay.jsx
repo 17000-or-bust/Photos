@@ -7,7 +7,6 @@ const { styled } = window;
 
 const PhotoDisplay = (props) => {
   const { photos, openModal, closeModal } = props;
-
   return (
     <PhotoDiv>
       <PhotoDisplayEntry photos={photos} openModal={openModal} closeModal={closeModal} />
