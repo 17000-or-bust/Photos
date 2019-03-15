@@ -31,7 +31,7 @@ app.get('/api/photos/:id', (req, res) => {
   const { id } = req.params;
     client.get(`${id}`, (err, reply) => {
       if (reply) {
-        res.status(200).send(reply);
+        res.status(200).send(JSON.parse(reply));
       } else {
       db.getPhotos(id, (err, photo) => {
         if (err) {

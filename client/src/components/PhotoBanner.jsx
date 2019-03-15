@@ -7,7 +7,6 @@ const { styled } = window;
 
 const PhotoBanner = (props) => {
   const { photos, openModal, closeModal } = props;
-  console.log(photos)
   return (
     <PhotoDiv>
       <PhotoInnerDiv>
