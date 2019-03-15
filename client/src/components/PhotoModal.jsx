@@ -44,7 +44,7 @@ class PhotoModal extends React.Component {
         return;
       }
       this.setState({
-        images: data.rows,
+        images: data,
       });
     });
   }

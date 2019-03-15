@@ -41,6 +41,7 @@
     "pg-format": "^1.0.4",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "redis": "^2.8.0",
     "sequelize": "^4.42.0",
     "styled-components": "^4.1.3"
   },

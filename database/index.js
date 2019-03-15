@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const {
-  username,
-  password,
-} = require('./config');
+// const {
+//   username,
+//   password,
+// } = require('./config');
 
 const sequelize = new Sequelize('restaurants', username, password, {
   host: 'localhost',

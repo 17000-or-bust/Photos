@@ -24,3 +24,7 @@ tests/__snapshots__/
 
 database/photos.csv
 stress.md
+config.js
+redis-5.0.3
+dump.rdb
+redis-5.0.3.tar.gz

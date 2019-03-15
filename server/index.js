@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 var compression = require('compression')
 const db = require('../database/primaryIndex');
+const redis = require('redis');
 
 const app = express();
 app.use(compression());
@@ -16,15 +17,42 @@ app.use(cors());
 const jsonParser = bodyParser.json();
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+const client = redis.createClient();
+
+client.on('connect', () => {
+	client.flushdb((err, success) => console.log('Redis client flushed'))
+  console.log('Redis client connected');
+});
+
+client.on('error', (err) => {
+	console.log('Redis went wrong:', err);
+});
+
+
 app.get('/api/photos/:id', (req, res) => {
   const { id } = req.params;
-  db.getPhotos(id, (err, photo) => {
-    if (err) {
-      res.status(500).send(err);
+  client.exists(`${id}`, (err, reply) => {
+    if (reply === 1) {
+      client.get(`${id}`, (err, reply) => {
+        if (err) {
+          console.log(err);
+          throw err;
+        } else {
+          res.status(210).send(JSON.parse(reply));
+        }
+      })
     } else {
-      res.status(200).send(photo);
+      db.getPhotos(id, (err, photo) => {
+        if (err) {
+          res.status(500).send(err);
+          return;
+        } else {
+          client.set(`${id}`, JSON.stringify(photo.rows));
+          res.status(200).send(photo.rows);
+        }
+      });
     }
-  });
+  })
 });
 
 app.post('/api/photos', jsonParser, (req, res) => {

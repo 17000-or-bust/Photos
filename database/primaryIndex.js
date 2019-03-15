@@ -1,12 +1,9 @@
 const { Pool } = require('pg');
+const config = require('./config');
 
-const pool = new Pool({
-  user: 'cowie',
-  password: 'Courtcowie22',
-  host: 'ec2-3-82-15-53.compute-1.amazonaws.com',
-  database: 'restaurant',
-  port: 5432,
-});
+const pool = new Pool(config);
+
+pool.connect(() => console.log('connected'));
 
 const getPhotos = (id, callback) => {
   const queryStr = `SELECT * FROM photos WHERE restaurant_id = ${id}`;

@@ -42,7 +42,7 @@ class App extends React.Component {
         return;
       }
       this.setState({
-        photos: data.rows,
+        photos: data,
       });
     });
   }
