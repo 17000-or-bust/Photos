@@ -23,7 +23,7 @@ To access the module, please go to:
 
 ###### Database
 
-1) The purpose of this project was to inherit a front-end applicationa and redesign a scalable back-end/system design.  If you want to run the data generation script it will take several hours, as it generates 140 million records.
+1) The purpose of this project was to inherit a front-end application and redesign a scalable back-end/system design.  If you want to run the data generation script it will take several hours, as it generates 140 million records.
 
 2) run 'npm run generate-data' if you wish to do so.
 
