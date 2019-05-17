@@ -1,13 +1,11 @@
 # Project Name
 
-> This photo module displays photos on a banner at the top and a preview gallery of 9 photos.  It also has a modal that appears with an image carousel when any of the photos are clicked on.
+> Scalable backend and system design for a restaurant reservation web application.  
 
-## Related Projects
+Inherited legacy codebase and redesigned a scalable backend, in order to achieve web-scale traffic
+Increased throughput by 1000% to 1880 RPS utilizing horizontal scaling (6 AWS EC2 machines and 3 database replications), an NGINX load balancer, and a Redis Cache
+Benchmarked PostgreSQL and MongoDB with databases of 140 million records to determine optimal query performance for my microservice
 
-  - https://github.com/table-for-five/header.git
-  - https://github.com/table-for-five/menu.git
-  - https://github.com/table-for-five/overview.git
-  - https://github.com/table-for-five/reservations.git
 
 ## Table of Contents
 
@@ -25,7 +23,11 @@ To access the module, please go to:
 
 ###### Database
 
-1) `npm run seed` to insert data into database
+1) The purpose of this project was to inherit a front-end applicationa and redesign a scalable back-end/system design.  If you want to run the data generation script it will take several hours, as it generates 140 million records.
+
+2) run 'npm run generate-data' if you wish to do so.
+
+3) You will need to create your own AWS S3 bucket for the photos.  As I have taken my bucket down for financial reasons.
 
 ###### Client
 `npm run react-dev` to run webpack and watch
